@@ -13,7 +13,7 @@ require('nvim-lsp-installer').setup({
 local lsp_format = require('lsp-format')
 
 lsp_format.setup({
-    typescript = { tab_width = 4 },
+    typescript = { tab_width = 2 }
 })
 
 local lsp_defaults = {
@@ -71,7 +71,7 @@ vim.api.nvim_create_autocmd('User', {
         -- Jumps to the definition of the type symbol
         bufmap('n', 'td', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
-        -- Lists all the references 
+        -- Lists all the references
         bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 
         -- Displays a function's signature information

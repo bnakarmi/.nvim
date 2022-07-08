@@ -18,6 +18,7 @@ set colorcolumn=80
 set signcolumn=yes
 set background="dark"
 set mouse=a
+set updatetime=100
 
 " map leader to space
 let mapleader = " "
@@ -71,6 +72,12 @@ call plug#begin()
     Plug 'lukas-reineke/lsp-format.nvim'
     " Auto pair
     Plug 'windwp/nvim-autopairs'
+    " Git gutter
+    Plug 'airblade/vim-gitgutter'
+    " Comment
+    Plug 'terrortylor/nvim-comment'
+    Plug 'alvan/vim-closetag'
+    Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 call plug#end()
 
 " Theme
@@ -87,6 +94,9 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let ayucolor = 'dark'
 colorscheme ayu 
 
+let g:prettier#autoformat_require_pragma = 0
+
 lua require('lsp-config')
 lua require('cmp-config')
 lua require('autopairs')
+lua require('nvim-comments')
