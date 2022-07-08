@@ -10,12 +10,6 @@ require('nvim-lsp-installer').setup({
     }
 })
 
-local lsp_format = require('lsp-format')
-
-lsp_format.setup({
-    typescript = { tab_width = 2 }
-})
-
 local lsp_defaults = {
     flags = {
         debounce_text_changes = 150,
@@ -25,7 +19,6 @@ local lsp_defaults = {
     ),
     on_attach = function(client, bufnr)
         vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
-        lsp_format.on_attach(client)
     end
 }
 

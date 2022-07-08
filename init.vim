@@ -68,8 +68,6 @@ call plug#begin()
     " Snippet
     Plug 'L3MON4D3/LuaSnip'
     Plug 'rafamadriz/friendly-snippets'
-    " Formatter
-    Plug 'lukas-reineke/lsp-format.nvim'
     " Auto pair
     Plug 'windwp/nvim-autopairs'
     " Git gutter
