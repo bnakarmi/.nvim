@@ -1,12 +1,11 @@
 " Plugins
 call plug#begin()
-    " Airline Themes
+    " Airline
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ryanoasis/vim-devicons'
-    " Colorscheme Themes
+    " Colorscheme
     Plug 'lucasprag/simpleblack'
-    Plug 'ayu-theme/ayu-vim'
     " Telescope
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -27,16 +26,16 @@ call plug#begin()
     " Snippet
     Plug 'L3MON4D3/LuaSnip'
     Plug 'rafamadriz/friendly-snippets'
-    " Auto pair
-    Plug 'windwp/nvim-autopairs'
-    " Git gutter
-    Plug 'airblade/vim-gitgutter'
-    " Comment
-    Plug 'terrortylor/nvim-comment'
-    Plug 'alvan/vim-closetag'
-    Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+    " Formatter
+    Plug 'jose-elias-alvarez/null-ls.nvim'
+    " NerdTree
     Plug 'preservim/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    " Utilities
+    Plug 'windwp/nvim-autopairs'
+    Plug 'terrortylor/nvim-comment'
+    Plug 'alvan/vim-closetag'
+    Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set exrc
@@ -60,6 +59,8 @@ set signcolumn=yes
 set background="dark"
 set mouse=a
 set updatetime=100
+set splitright
+set splitbelow
 
 " map leader to space
 let mapleader = " "
@@ -67,10 +68,10 @@ let mapleader = " "
 " Exit insert mode
 inoremap kj <Esc>
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <leader>fb <cmd>Telescope buffers<CR>
+nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 " Move lines up/down 
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -78,10 +79,13 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
-" Format
-nmap <Leader><S-f> <Plug>(Prettier)
 " Open nerd tree with current file focused
 nnoremap <leader>n :NERDTreeFind<CR>
+nnoremap <leader>N :NERDTreeClose<CR>
+" Save
+nnoremap <leader>ss :wa<CR>
+" Format
+nnoremap <leader>f :Format<CR>
 
 " Theme
 syntax enable
@@ -94,12 +98,10 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_powerline_fonts = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Color scheme theme
-let ayucolor = 'dark'
-colorscheme ayu 
-" Allow prettier to format without pragma
-let g:prettier#autoformat_require_pragma = 0
+colorscheme simpleblack 
 
 lua require('lsp-config')
 lua require('cmp-config')
-lua require('autopairs')
-lua require('nvim-comments')
+lua require('null-ls-config')
+lua require('autopairs-config')
+lua require('nvim-comments-config')

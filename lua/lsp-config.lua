@@ -18,6 +18,10 @@ local lsp_defaults = {
         vim.lsp.protocol.make_client_capabilities()
     ),
     on_attach = function(client, bufnr)
+        if client.name == 'tsserver' then
+            client.resolved_capabilities.document_formatting = false
+        end
+
         vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
     end
 }
@@ -62,7 +66,7 @@ vim.api.nvim_create_autocmd('User', {
         bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
 
         -- Jumps to the definition of the type symbol
-        bufmap('n', 'td', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+        bufmap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
         -- Lists all the references
         bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
@@ -74,8 +78,8 @@ vim.api.nvim_create_autocmd('User', {
         bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
         -- Selects a code action available at the current cursor position
-        bufmap('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-        bufmap('x', 'ca', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+        bufmap('n', '<C-.>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+        bufmap('x', '<C-.>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
 
         -- Show diagnostics in a floating window
         bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
@@ -85,5 +89,7 @@ vim.api.nvim_create_autocmd('User', {
 
         -- Move to the next diagnostic
         bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+
+        vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
     end
 })
