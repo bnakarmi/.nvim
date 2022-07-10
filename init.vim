@@ -6,6 +6,7 @@ call plug#begin()
     Plug 'ryanoasis/vim-devicons'
     " Colorscheme
     Plug 'lucasprag/simpleblack'
+    Plug 'k4yt3x/ayu-vim-darker'
     " Telescope
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -44,9 +45,9 @@ set nu
 set nohlsearch
 set hidden
 set noerrorbells
-set tabstop=4 softtabstop=4
+set tabstop=2 softtabstop=2
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
 set autoindent
 set smartindent
 set nowrap
@@ -98,7 +99,8 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_powerline_fonts = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Color scheme theme
-colorscheme simpleblack 
+let auycolor='darker'
+colorscheme ayu 
 
 lua require('lsp-config')
 lua require('cmp-config')
