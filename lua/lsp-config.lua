@@ -41,6 +41,7 @@ lspconfig['html'].setup({})
 lspconfig['sumneko_lua'].setup({})
 lspconfig['tsserver'].setup({})
 lspconfig['vimls'].setup({})
+lspconfig['gopls'].setup({})
 
 -- Setup keybinding
 vim.api.nvim_create_autocmd('User', {
