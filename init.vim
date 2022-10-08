@@ -4,6 +4,7 @@ call plug#begin()
     " Colorscheme
     Plug 'lucasprag/simpleblack'
     Plug 'k4yt3x/ayu-vim-darker'
+    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
     " Icons
     Plug 'ryanoasis/vim-devicons'
     Plug 'kyazdani42/nvim-web-devicons'
