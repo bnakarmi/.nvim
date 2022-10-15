@@ -54,6 +54,18 @@ vim.api.nvim_create_autocmd('User', {
             vim.keymap.set(mode, lhs, rhs, opts)
         end
 
+        local organize_imports = function(bufnr)
+            if not bufnr then bufnr = vim.api.nvim_get_current_buf() end
+
+            local params = {
+                command = "_typescript.organizeImports",
+                arguments = { vim.api.nvim_buf_get_name(bufnr) },
+                title = "Organize imports"
+            }
+
+            vim.lsp.buf.execute_command(params)
+        end
+
         -- Displays hover information about the symbol under the cursor
         bufmap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
@@ -74,6 +86,9 @@ vim.api.nvim_create_autocmd('User', {
 
         -- Displays a function's signature information
         bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+
+        -- Organize imports
+        bufmap('n', 'go', organize_imports)
 
         -- Renames all references to the symbol under the cursor
         bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
