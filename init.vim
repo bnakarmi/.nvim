@@ -5,7 +5,6 @@ call plug#begin()
     Plug 'lucasprag/simpleblack'
     Plug 'k4yt3x/ayu-vim-darker'
     Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-    Plug 'Mofiqul/vscode.nvim'
     " Icons
     Plug 'ryanoasis/vim-devicons'
     Plug 'kyazdani42/nvim-web-devicons'
@@ -28,6 +27,8 @@ call plug#begin()
     " Snippet
     Plug 'L3MON4D3/LuaSnip'
     Plug 'rafamadriz/friendly-snippets'
+    " Flutter
+    Plug 'akinsho/flutter-tools.nvim'
     " Formatter
     Plug 'jose-elias-alvarez/null-ls.nvim'
     " NerdTree
@@ -49,4 +50,4 @@ lua require("cmp-config")
 lua require("null-ls-config")
 lua require("autopairs-config")
 lua require("nvim-comments-config")
-
+lua require("flutter-tools").setup{}

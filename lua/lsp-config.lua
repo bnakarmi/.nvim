@@ -14,12 +14,12 @@ local lsp_defaults = {
     flags = {
         debounce_text_changes = 150,
     },
-    capabilities = require('cmp_nvim_lsp').update_capabilities(
+    capabilities = require('cmp_nvim_lsp').default_capabilities(
         vim.lsp.protocol.make_client_capabilities()
     ),
     on_attach = function(client, bufnr)
         if client.name == 'tsserver' then
-            client.resolved_capabilities.document_formatting = false
+            client.server_capabilities.document_formatting = false
         end
 
         vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
@@ -42,7 +42,8 @@ lspconfig['sumneko_lua'].setup({})
 lspconfig['tsserver'].setup({})
 lspconfig['vimls'].setup({})
 lspconfig['gopls'].setup({})
-
+lspconfig['dartls'].setup({})
+--
 -- Setup keybinding
 vim.api.nvim_create_autocmd('User', {
     pattern = 'LspAttached',
@@ -106,6 +107,6 @@ vim.api.nvim_create_autocmd('User', {
         -- Move to the next diagnostic
         bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
-        vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+        vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format{ async = true }' ]]
     end
 })

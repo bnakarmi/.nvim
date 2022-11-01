@@ -7,6 +7,7 @@ null_ls.setup({
     debug = false,
     sources = {
         formatting.prettier,
-        diagnostics.golangci_lint
+        formatting.dart_format,
+        diagnostics.golangci_lint,
     }
 })
