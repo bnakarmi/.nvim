@@ -1,2 +1,3 @@
 require("bimarsh.set")
-require("remap.set")
+require("bimarsh.remap")
+require("bimarsh.command")

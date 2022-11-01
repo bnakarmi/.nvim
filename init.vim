@@ -42,8 +42,8 @@ call plug#begin()
     Plug 'tpope/vim-surround'
 call plug#end()
 
-lua require("bimarsh.set")
-lua require("bimarsh.remap")
+lua require("bimarsh.init")
+
 lua require("lualine").setup()
 lua require("lsp-config")
 lua require("cmp-config")
