@@ -43,7 +43,7 @@ lspconfig['tsserver'].setup({})
 lspconfig['vimls'].setup({})
 lspconfig['gopls'].setup({})
 lspconfig['dartls'].setup({})
---
+
 -- Setup keybinding
 vim.api.nvim_create_autocmd('User', {
     pattern = 'LspAttached',
