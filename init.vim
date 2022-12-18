@@ -42,12 +42,4 @@ call plug#begin()
     Plug 'tpope/vim-surround'
 call plug#end()
 
-lua require("bimarsh.init")
-
-lua require("lualine").setup()
-lua require("lsp-config")
-lua require("cmp-config")
-lua require("null-ls-config")
-lua require("autopairs-config")
-lua require("nvim-comments-config")
-lua require("flutter-tools").setup{}
+lua require("bimarsh")

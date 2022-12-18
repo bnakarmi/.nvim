@@ -86,20 +86,20 @@ vim.api.nvim_create_autocmd('User', {
     bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 
     -- Displays a function's signature information
-    bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+    bufmap('n', '<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
     -- Organize imports
-    bufmap('n', 'go', organize_imports)
+    bufmap('n', '<leader>oi', organize_imports)
 
     -- Renames all references to the symbol under the cursor
-    bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+    bufmap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
     -- Selects a code action available at the current cursor position
-    bufmap('n', '<leader>.', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-    bufmap('x', '<leader>.', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+    bufmap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    bufmap('x', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
 
     -- Show diagnostics in a floating window
-    bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+    bufmap('n', '<leader>vd', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
     -- Move to the previous diagnostic
     bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
@@ -108,5 +108,6 @@ vim.api.nvim_create_autocmd('User', {
     bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format{ async = true }' ]]
+
   end
 })
