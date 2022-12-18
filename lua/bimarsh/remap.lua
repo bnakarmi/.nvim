@@ -4,6 +4,10 @@ vim.keymap.set("i", "kj", "<Esc>")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 -- Recenter on half page up
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- Recenter on page forward
+vim.keymap.set("n", "<C-f>", "<C-f>zz")
+-- Recenter on page backward
+vim.keymap.set("n", "<C-b>", "<C-b>zz")
 
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
@@ -32,7 +36,7 @@ vim.keymap.set("n", "<leader>ce", "<cmd>NERDTreeClose<CR>")
 -- Search Files
 vim.keymap.set("n", "<leader>sf", "<cmd>Telescope find_files<CR>", { desc = "[S]earch [F]iles" })
 -- Search String
-vim.keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<CR>", { desc = "[S]earch [S]tring" })
+vim.keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<CR>", { desc = "[S]earch by [G]rep" })
 -- Search Buffers
 vim.keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<CR>", { desc = "[S]earch [B]uffers" })
 -- Search Help Tags
