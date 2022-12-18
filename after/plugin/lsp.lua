@@ -107,7 +107,5 @@ vim.api.nvim_create_autocmd('User', {
     -- Move to the next diagnostic
     bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
-    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format{ async = true }' ]]
-
   end
 })

@@ -1,33 +1,37 @@
-local keymap = require("bimarsh.keymap")
-local nnoremap = keymap.nnoremap
-local inoremap = keymap.inoremap
-local vnoremap = keymap.vnoremap
+vim.keymap.set("i", "kj", "<Esc>")
 
-inoremap("kj", "<Esc>")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- Move lines up/down 
-nnoremap("<A-j>", ":m .+1<CR>==")
-nnoremap("<A-k>", ":m .-2<CR>==")
-inoremap("<A-j>", "<Esc>:m .+1<CR>==gi")
-inoremap("<A-k>", "<Esc>:m .-2<CR>==gi")
-vnoremap("<A-j>", ":m '>+1<CR>gv=gv")
-vnoremap("<A-k>", ":m '<-2<CR>gv=gv")
+-- Move lines up/down
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
+vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
+vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
--- Save
-nnoremap("<leader>ss", ":wa<CR>")
+-- Save all
+vim.keymap.set("n", "<leader>sa", ":wa<CR>")
 
 -- Format
-nnoremap("<leader>f", ":Format<CR>")
+vim.keymap.set("n", "<leader>f", ":Format<CR>")
 
 -- NerdTree
-nnoremap("<leader>n", "<cmd>NERDTreeFind<CR>")
-nnoremap("<leader>N", "<cmd>NERDTreeClose<CR>")
+-- Open Explorer
+vim.keymap.set("n", "<leader>oe", "<cmd>NERDTreeFind<CR>")
+-- Close Explorer
+vim.keymap.set("n", "<leader>ce", "<cmd>NERDTreeClose<CR>")
 
 -- Telescope
-nnoremap("<leader>ff", "<cmd>Telescope find_files<CR>")
-nnoremap("<leader>fg", "<cmd>Telescope live_grep<CR>")
-nnoremap("<leader>fb", "<cmd>Telescope buffers<CR>")
-nnoremap("<leader>fh", "<cmd>Telescope help_tags<CR>")
+-- Find Files
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+-- Find String
+vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>")
+-- Find Buffers
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
+-- Find Help Tags
+vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
 
--- Close buffers
-nnoremap("<leader>x", ":BufOnly<CR>")
+-- Close Buffers
+vim.keymap.set("n", "<leader>cb", ":BufOnly<CR>")
