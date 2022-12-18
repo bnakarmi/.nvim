@@ -1,7 +1,12 @@
 vim.keymap.set("i", "kj", "<Esc>")
 
+-- Recenter on half page down
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- Recenter on half page up
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
 
 -- Move lines up/down
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
@@ -24,14 +29,16 @@ vim.keymap.set("n", "<leader>oe", "<cmd>NERDTreeFind<CR>")
 vim.keymap.set("n", "<leader>ce", "<cmd>NERDTreeClose<CR>")
 
 -- Telescope
--- Find Files
-vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
--- Find String
-vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>")
--- Find Buffers
-vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
--- Find Help Tags
-vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
+-- Search Files
+vim.keymap.set("n", "<leader>sf", "<cmd>Telescope find_files<CR>", { desc = "[S]earch [F]iles" })
+-- Search String
+vim.keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<CR>", { desc = "[S]earch [S]tring" })
+-- Search Buffers
+vim.keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<CR>", { desc = "[S]earch [B]uffers" })
+-- Search Help Tags
+vim.keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "[S]earch [H]elp" })
+-- Search Diagnostics
+vim.keymap.set("n", "<leader>sd", "<cmd>Telescope diagnostics<CR>", { desc = "[S]earch [D]iagnostics" })
 
 -- Close Buffers
 vim.keymap.set("n", "<leader>cb", ":BufOnly<CR>")
