@@ -8,7 +8,8 @@ require("nvim-treesitter.configs").setup({
         'typescript',
         'javascript',
         'help',
-        'css'
+        'css',
+        'svelte'
     },
     sync_install = false,
     auto_install = true,
