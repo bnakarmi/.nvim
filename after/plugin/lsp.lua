@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd('User', {
     bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
 
     -- Jumps to the definition of the type symbol
-    bufmap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+    bufmap('n', '<leader>gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
     -- Lists all the references
     bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')

@@ -5,6 +5,7 @@ call plug#begin()
     Plug 'lucasprag/simpleblack'
     Plug 'k4yt3x/ayu-vim-darker'
     Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+    Plug 'rose-pine/neovim',
     " Icons
     Plug 'ryanoasis/vim-devicons'
     Plug 'kyazdani42/nvim-web-devicons'

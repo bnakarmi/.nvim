@@ -1,7 +1,7 @@
 vim.g.ayucolor = "darker"
 
 vim.cmd.syntax("enable")
-vim.cmd.colorscheme("ayu")
+vim.cmd.colorscheme("rose-pine")
 
 function Colors()
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
