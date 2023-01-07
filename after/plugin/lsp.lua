@@ -44,6 +44,7 @@ lspconfig['vimls'].setup({})
 lspconfig['gopls'].setup({})
 lspconfig['dartls'].setup({})
 lspconfig['svelte'].setup({})
+lspconfig['yamlls'].setup({})
 
 -- Setup keybinding
 vim.api.nvim_create_autocmd('User', {
