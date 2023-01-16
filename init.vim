@@ -8,7 +8,6 @@ call plug#begin()
     Plug 'EdenEast/nightfox.nvim'
     " Icons
     Plug 'ryanoasis/vim-devicons'
-    Plug 'kyazdani42/nvim-web-devicons'
     " Telescope
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-lua/plenary.nvim'
