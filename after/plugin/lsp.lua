@@ -1,116 +1,218 @@
-require('nvim-lsp-installer').setup({
-  -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-  automatic_installation = true,
-  ui = {
-    icons = {
-      server_installed = "✓",
-      server_pending = "➜",
-      server_uninstalled = "✗"
-    }
-  }
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
+local lsp = require("lsp-zero")
+
+lsp.preset("recommended")
+
+lsp.ensure_installed({
+	"angularls",
+	"cssls",
+	"dartls",
+	"html",
+	"omnisharp",
+	"rust_analyzer",
+	"sumneko_lua",
+	"svelte",
+	"tsserver",
+	"yamlls",
 })
 
-local lsp_defaults = {
-  flags = {
-    debounce_text_changes = 150,
-  },
-  capabilities = require('cmp_nvim_lsp').default_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  ),
-  on_attach = function(client, bufnr)
-    if client.name == 'tsserver' then
-      client.server_capabilities.document_formatting = false
-    end
+-- Fix Undefined global 'vim'
+lsp.configure("sumneko_lua", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+})
 
-    vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
-  end
-}
+local check_back_space = function()
+	local col = vim.fn.col(".") - 1
 
-local lspconfig = require('lspconfig')
+	if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
+		return true
+	else
+		return false
+	end
+end
 
-lspconfig.util.default_config = vim.tbl_deep_extend(
-  'force',
-  lspconfig.util.default_config,
-  lsp_defaults
-)
+local luasnip = require("luasnip")
+local cmp = require("cmp")
 
--- Setup LSP
-lspconfig['angularls'].setup({})
-lspconfig['cssls'].setup({})
-lspconfig['html'].setup({})
-lspconfig['sumneko_lua'].setup({})
-lspconfig['tsserver'].setup({})
-lspconfig['vimls'].setup({})
-lspconfig['gopls'].setup({})
-lspconfig['dartls'].setup({})
-lspconfig['svelte'].setup({})
-lspconfig['yamlls'].setup({})
-lspconfig['rust_analyzer'].setup({})
-lspconfig['omnisharp'].setup({})
+luasnip.config.set_config({ region_check_events = "InsertEnter" })
 
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = lsp.defaults.cmp_mappings({
+	-- Select Previous item
+	["<Up>"] = cmp.mapping.select_prev_item(cmp_select),
+	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+	-- Selct Next item
+	["<Down>"] = cmp.mapping.select_next_item(cmp_select),
+	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+	-- Scroll Back
+	["<C-b>"] = cmp.mapping.scroll_docs(-4),
+	-- Scroll Forward
+	["<C-f>"] = cmp.mapping.scroll_docs(4),
+	-- Jump Down
+	["<C-d>"] = cmp.mapping(function(fallback)
+		if luasnip.jumpable(1) then
+			luasnip.jump(1)
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
+	-- Jump Up
+	["<C-u>"] = cmp.mapping(function(fallback)
+		if luasnip.jumpable(-1) then
+			luasnip.jump(-1)
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
+	["<C-Space>"] = cmp.mapping.complete(),
+	["<C-e>"] = cmp.mapping.abort(),
+	["<CR>"] = cmp.mapping.confirm({ select = true }),
+	["<Tab>"] = cmp.mapping(function(fallback)
+		local col = vim.fn.col(".") - 0
 
--- Setup keybinding
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'LspAttached',
-  desc = 'LSP actions',
-  callback = function()
-    local bufmap = function(mode, lhs, rhs)
-      local opts = { buffer = true }
+		if cmp.visible() then
+			cmp.select_next_item(cmp_select)
+		elseif check_back_space() then
+			fallback()
+		else
+			cmp.complete()
+		end
+	end, { "i", "s" }),
+	["<S-Tab>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			cmp.select_prev_item(cmp_select)
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
+})
 
-      vim.keymap.set(mode, lhs, rhs, opts)
-    end
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
+})
 
-    local organize_imports = function(bufnr)
-      if not bufnr then bufnr = vim.api.nvim_get_current_buf() end
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
+})
 
-      local params = {
-        command = "_typescript.organizeImports",
-        arguments = { vim.api.nvim_buf_get_name(bufnr) },
-        title = "Organize imports"
-      }
+lsp.setup_nvim_cmp({
+	mapping = cmp_mappings,
+})
 
-      vim.lsp.buf.execute_command(params)
-    end
+lsp.set_preferences({
+	suggest_lsp_servers = false,
+	sign_icons = {
+		error = "E",
+		warn = "W",
+		hint = "H",
+		info = "I",
+	},
+})
 
-    -- Displays hover information about the symbol under the cursor
-    bufmap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>')
+lsp.on_attach(function(client, bufnr)
+	local bufmap = function(mode, lhs, rhs)
+		local opts = { buffer = bufnr, remap = false }
 
-    -- Jump to the definition
-    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+		vim.keymap.set(mode, lhs, rhs, opts)
+	end
 
-    -- Jump to declaration
-    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+	local organize_imports = function()
+		local buf_nr = vim.api.nvim_get_current_buf()
 
-    -- Lists all the implementations for the symbol under the cursor
-    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+		local params = {
+			command = "_typescript.organizeImports",
+			arguments = { vim.api.nvim_buf_get_name(buf_nr) },
+			title = "Organize imports",
+		}
 
-    -- Jumps to the definition of the type symbol
-    bufmap('n', '<leader>gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+		vim.lsp.buf.execute_command(params)
+	end
 
-    -- Lists all the references
-    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+	-- Displays hover information about the symbol under the cursor
+	bufmap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<cr>")
 
-    -- Displays a function's signature information
-    bufmap('n', '<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+	-- Jump to the definition
+	bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
 
-    -- Organize imports
-    bufmap('n', '<leader>oi', organize_imports)
+	-- Jump to declaration
+	bufmap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
 
-    -- Renames all references to the symbol under the cursor
-    bufmap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
+	-- Lists all the implementations for the symbol under the cursor
+	bufmap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
 
-    -- Selects a code action available at the current cursor position
-    bufmap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-    bufmap('x', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+	-- Jumps to the definition of the type symbol
+	bufmap("n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
 
-    -- Show diagnostics in a floating window
-    bufmap('n', '<leader>vd', '<cmd>lua vim.diagnostic.open_float()<cr>')
+	-- Lists all the references
+	bufmap("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
 
-    -- Move to the previous diagnostic
-    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+	-- Displays a function's signature information
+	bufmap("n", "<leader>sh", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
 
-    -- Move to the next diagnostic
-    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+	-- Organize imports
+	bufmap("n", "<leader>oi", organize_imports)
 
-  end
+	-- Renames all references to the symbol under the cursor
+	bufmap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>")
+
+	-- Selects a code action available at the current cursor position
+	bufmap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+	bufmap("x", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
+
+	-- Show diagnostics in a floating window
+	bufmap("n", "<leader>vd", "<cmd>lua vim.diagnostic.open_float()<cr>")
+
+	-- Move to the previous diagnostic
+	bufmap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+
+	-- Move to the next diagnostic
+	bufmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+end)
+
+lsp.setup()
+
+-- If you want insert `(` after select function or method item
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+local sign = function(opts)
+	vim.fn.sign_define(opts.name, {
+		texthl = opts.name,
+		text = opts.text,
+		numhl = "",
+	})
+end
+
+sign({ name = "DiagnosticSignError", text = "✘" })
+sign({ name = "DiagnosticSignWarn", text = "▲" })
+sign({ name = "DiagnosticSignHint", text = "⚑" })
+sign({ name = "DiagnosticSignInfo", text = "" })
+
+vim.diagnostic.config({
+	virtual_text = true,
+	severity_sort = true,
+	float = {
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+	},
 })

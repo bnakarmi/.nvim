@@ -8,6 +8,7 @@ null_ls.setup({
     sources = {
         formatting.prettier,
         formatting.dart_format,
+        formatting.stylua,
         diagnostics.golangci_lint,
     }
 })
