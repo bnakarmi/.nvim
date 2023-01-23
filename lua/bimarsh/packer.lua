@@ -2,13 +2,11 @@ vim.cmd.packadd("packer.nvim")
 
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
-	use("nvim-lualine/lualine.nvim")
 	-- Colorscheme
+  use("nvim-lualine/lualine.nvim")
 	use("lucasprag/simpleblack")
 	use("k4yt3x/ayu-vim-darker")
 	use("EdenEast/nightfox.nvim")
-	-- Icons
-	use("ryanoasis/vim-devicons")
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
