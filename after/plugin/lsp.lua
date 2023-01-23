@@ -1,6 +1,7 @@
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
 local lsp = require("lsp-zero")
+local luasnip = require("luasnip")
+local cmp = require("cmp")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 lsp.preset("recommended")
 
@@ -37,11 +38,6 @@ local check_back_space = function()
 		return false
 	end
 end
-
-local luasnip = require("luasnip")
-local cmp = require("cmp")
-
-luasnip.config.set_config({ region_check_events = "InsertEnter" })
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -188,9 +184,7 @@ end)
 
 lsp.setup()
 
--- If you want insert `(` after select function or method item
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
+-- Insert `(` after select function or method item
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 local sign = function(opts)
