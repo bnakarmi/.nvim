@@ -1,5 +1,1 @@
-require('lualine').setup({
-    options = {
-        theme = 'ayu_dark'
-    }
-})
+require('lualine').setup()
