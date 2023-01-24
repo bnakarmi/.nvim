@@ -1,7 +1,6 @@
 local lsp = require("lsp-zero")
 local luasnip = require("luasnip")
 local cmp = require("cmp")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 lsp.preset("recommended")
 
@@ -166,8 +165,6 @@ end)
 
 lsp.setup()
 
--- Insert `(` after select function or method item
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 local sign = function(opts)
     vim.fn.sign_define(opts.name, {
