@@ -7,9 +7,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     "angularls",
     "cssls",
-    "dartls",
     "html",
-    "omnisharp",
     "rust_analyzer",
     "sumneko_lua",
     "svelte",

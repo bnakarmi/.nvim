@@ -154,28 +154,13 @@ _G.packer_plugins = {
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nightfox.nvim",
     url = "https://github.com/EdenEast/nightfox.nvim"
   },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
-  },
-  ["nvim-autopairs"] = {
-    loaded = true,
-    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs",
-    url = "https://github.com/windwp/nvim-autopairs"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-comment"] = {
-    loaded = true,
-    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-comment",
-    url = "https://github.com/terrortylor/nvim-comment"
-  },
   ["nvim-dap"] = {
-    after = { "vscode-js-debug", "telescope-dap.nvim", "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "nvim-dap-vscode-js" },
+    after = { "telescope-dap.nvim", "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -209,15 +194,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap-virtual-text",
     url = "https://github.com/theHamsta/nvim-dap-virtual-text"
-  },
-  ["nvim-dap-vscode-js"] = {
-    load_after = {
-      ["nvim-dap"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap-vscode-js",
-    url = "https://github.com/mxsdev/nvim-dap-vscode-js"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -258,16 +234,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-closetag"] = {
-    loaded = true,
-    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-closetag",
-    url = "https://github.com/alvan/vim-closetag"
-  },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-devicons",
-    url = "https://github.com/ryanoasis/vim-devicons"
-  },
   ["vim-gitgutter"] = {
     loaded = true,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-gitgutter",
@@ -277,15 +243,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
     url = "https://github.com/tpope/vim-surround"
-  },
-  ["vscode-js-debug"] = {
-    load_after = {
-      ["nvim-dap"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\vscode-js-debug",
-    url = "https://github.com/microsoft/vscode-js-debug"
   }
 }
 

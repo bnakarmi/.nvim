@@ -48,16 +48,10 @@ return require("packer").startup(function(use)
         module = { "dap" },
         wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python" },
         requires = {
-            { "theHamsta/nvim-dap-virtual-text" },
             { "rcarriga/nvim-dap-ui" },
-            { "mfussenegger/nvim-dap-python" },
-            { "mxsdev/nvim-dap-vscode-js" },
-            {
-                "microsoft/vscode-js-debug",
-                opt = true,
-                run = "npm install --legacy-peer-deps && npm run compile",
-            },
+            { "theHamsta/nvim-dap-virtual-text" },
             { "nvim-telescope/telescope-dap.nvim" },
+            { "mfussenegger/nvim-dap-python" },
         },
     })
 
