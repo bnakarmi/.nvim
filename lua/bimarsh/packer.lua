@@ -21,6 +21,9 @@ return require("packer").startup(function(use)
         requires = {
             { "nvim-lua/plenary.nvim" },
         },
+        config = function()
+            require('telescope').setup()
+        end
     })
 
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -44,13 +47,6 @@ return require("packer").startup(function(use)
             { "L3MON4D3/LuaSnip" },
             { "rafamadriz/friendly-snippets" },
         },
-    })
-
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("null-ls").setup()
-        end
     })
 
     -- Flutter
