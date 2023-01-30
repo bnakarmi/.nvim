@@ -4,7 +4,12 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     -- Colorscheme
-    use("nvim-lualine/lualine.nvim")
+    use({
+        "nvim-lualine/lualine.nvim",
+        config = function()
+            require("lualine").setup()
+        end
+    })
     use("lucasprag/simpleblack")
     use("k4yt3x/ayu-vim-darker")
     use("EdenEast/nightfox.nvim")
@@ -17,6 +22,7 @@ return require("packer").startup(function(use)
             { "nvim-lua/plenary.nvim" },
         },
     })
+
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
     -- LSP
@@ -40,23 +46,21 @@ return require("packer").startup(function(use)
         },
     })
 
-    -- Debug
     use({
-        "mfussenegger/nvim-dap",
-        opt = true,
-        event = "BufReadPre",
-        module = { "dap" },
-        wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python" },
-        requires = {
-            { "rcarriga/nvim-dap-ui" },
-            { "theHamsta/nvim-dap-virtual-text" },
-            { "nvim-telescope/telescope-dap.nvim" },
-            { "mfussenegger/nvim-dap-python" },
-        },
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+            require("null-ls").setup()
+        end
     })
 
     -- Flutter
-    use("akinsho/flutter-tools.nvim")
+    use({
+        "akinsho/flutter-tools.nvim",
+        config = function()
+            require("flutter-tools").setup({})
+        end
+    })
+
     -- NerdTree
     use("preservim/nerdtree")
     use("Xuyuanp/nerdtree-git-plugin")
