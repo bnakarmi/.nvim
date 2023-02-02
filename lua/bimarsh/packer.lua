@@ -28,6 +28,10 @@ return require("packer").startup(function(use)
 
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+    })
+
     -- LSP
     use({
         "VonHeikemen/lsp-zero.nvim",
