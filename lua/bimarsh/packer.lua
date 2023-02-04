@@ -11,7 +11,6 @@ return require("packer").startup(function(use)
         end
     })
     use("lucasprag/simpleblack")
-    use("k4yt3x/ayu-vim-darker")
     use("EdenEast/nightfox.nvim")
 
     -- Telescope
