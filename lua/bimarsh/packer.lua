@@ -11,7 +11,9 @@ return require("packer").startup(function(use)
         end
     })
     use("lucasprag/simpleblack")
-    use("EdenEast/nightfox.nvim")
+    use({
+        "EdenEast/nightfox.nvim",
+    })
 
     -- Telescope
     use({
