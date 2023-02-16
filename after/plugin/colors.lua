@@ -1,6 +1,14 @@
 vim.cmd.syntax("enable")
-vim.cmd.colorscheme("carbonfox")
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalSB", { bg = "none" })
+
+function Color(scheme)
+    scheme = scheme or "nightfox"
+
+    vim.cmd.colorscheme(scheme)
+
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalSB", { bg = "none" })
+end
+
+Color()
