@@ -1,7 +1,7 @@
 vim.cmd.syntax("enable")
 
 function Color(scheme)
-    scheme = scheme or "nightfox"
+    scheme = scheme or "github_dark_default"
 
     vim.cmd.colorscheme(scheme)
 
