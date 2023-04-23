@@ -15,11 +15,7 @@ return require("packer").startup(function(use)
         "EdenEast/nightfox.nvim",
     })
     use({
-        'projekt0n/github-nvim-theme',
-        tag = 'v0.0.7',
-        config = function()
-            require('github-theme').setup()
-        end
+        'folke/tokyonight.nvim'
     })
 
     -- Telescope

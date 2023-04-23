@@ -9,7 +9,6 @@ lsp.ensure_installed({
     "cssls",
     "html",
     "rust_analyzer",
-    "sumneko_lua",
     "svelte",
     "tsserver",
     "yamlls",
