@@ -4,10 +4,19 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     -- Colorscheme
-    use("nvim-lualine/lualine.nvim")
+    use({
+        "nvim-lualine/lualine.nvim",
+        config = function()
+            require("lualine").setup()
+        end
+    })
     use("lucasprag/simpleblack")
-    use("k4yt3x/ayu-vim-darker")
-    use("EdenEast/nightfox.nvim")
+    use({
+        "EdenEast/nightfox.nvim",
+    })
+    use({
+        'folke/tokyonight.nvim'
+    })
 
     -- Telescope
     use({
@@ -16,8 +25,16 @@ return require("packer").startup(function(use)
         requires = {
             { "nvim-lua/plenary.nvim" },
         },
+        config = function()
+            require('telescope').setup()
+        end
     })
+
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+    })
 
     -- LSP
     use({
@@ -40,29 +57,14 @@ return require("packer").startup(function(use)
         },
     })
 
-    -- Debug
+    -- Flutter
     use({
-        "mfussenegger/nvim-dap",
-        opt = true,
-        event = "BufReadPre",
-        module = { "dap" },
-        wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python" },
-        requires = {
-            { "theHamsta/nvim-dap-virtual-text" },
-            { "rcarriga/nvim-dap-ui" },
-            { "mfussenegger/nvim-dap-python" },
-            { "mxsdev/nvim-dap-vscode-js" },
-            {
-                "microsoft/vscode-js-debug",
-                opt = true,
-                run = "npm install --legacy-peer-deps && npm run compile",
-            },
-            { "nvim-telescope/telescope-dap.nvim" },
-        },
+        "akinsho/flutter-tools.nvim",
+        config = function()
+            require("flutter-tools").setup({})
+        end
     })
 
-    -- Flutter
-    use("akinsho/flutter-tools.nvim")
     -- NerdTree
     use("preservim/nerdtree")
     use("Xuyuanp/nerdtree-git-plugin")

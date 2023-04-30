@@ -71,3 +71,6 @@ vim.keymap.set("n", "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<cr>
 vim.keymap.set("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", { desc = "[D]ebug [T]erminate" })
 vim.keymap.set("n", "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", { desc = "[D]ebug [S]tep Out" })
 vim.keymap.set("v", "<leader>de", "<cmd>lua require'dapui'.eval()<cr>", { desc = "[D]ebug [E]valuate" })
+
+-- Terminal
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "[T]erminal [C]lose" })

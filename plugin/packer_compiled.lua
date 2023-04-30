@@ -79,11 +79,14 @@ _G.packer_plugins = {
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+<<<<<<< HEAD
   ["ayu-vim-darker"] = {
     loaded = true,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/ayu-vim-darker",
     url = "https://github.com/k4yt3x/ayu-vim-darker"
   },
+=======
+>>>>>>> d10b14b0a94a4995f46176cfe3931e48dc5c6368
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -110,6 +113,7 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["flutter-tools.nvim"] = {
+    config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18flutter-tools\frequire\0" },
     loaded = true,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
     url = "https://github.com/akinsho/flutter-tools.nvim"
@@ -125,6 +129,7 @@ _G.packer_plugins = {
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
   ["lualine.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\flualine\frequire\0" },
     loaded = true,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
@@ -154,11 +159,20 @@ _G.packer_plugins = {
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
     url = "https://github.com/EdenEast/nightfox.nvim"
   },
+<<<<<<< HEAD
+=======
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
+>>>>>>> d10b14b0a94a4995f46176cfe3931e48dc5c6368
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+<<<<<<< HEAD
   ["nvim-dap"] = {
     after = { "nvim-dap-vscode-js", "nvim-dap-ui", "nvim-dap-python", "nvim-dap-virtual-text", "telescope-dap.nvim", "vscode-js-debug" },
     loaded = false,
@@ -204,6 +218,8 @@ _G.packer_plugins = {
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/nvim-dap-vscode-js",
     url = "https://github.com/mxsdev/nvim-dap-vscode-js"
   },
+=======
+>>>>>>> d10b14b0a94a4995f46176cfe3931e48dc5c6368
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -229,6 +245,7 @@ _G.packer_plugins = {
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/simpleblack",
     url = "https://github.com/lucasprag/simpleblack"
   },
+<<<<<<< HEAD
   ["telescope-dap.nvim"] = {
     load_after = {
       ["nvim-dap"] = true
@@ -238,11 +255,22 @@ _G.packer_plugins = {
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/telescope-dap.nvim",
     url = "https://github.com/nvim-telescope/telescope-dap.nvim"
   },
+=======
+>>>>>>> d10b14b0a94a4995f46176cfe3931e48dc5c6368
   ["telescope.nvim"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14telescope\frequire\0" },
     loaded = true,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+<<<<<<< HEAD
+=======
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
+  },
+>>>>>>> d10b14b0a94a4995f46176cfe3931e48dc5c6368
   ["vim-gitgutter"] = {
     loaded = true,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
@@ -252,6 +280,7 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+<<<<<<< HEAD
   },
   ["vscode-js-debug"] = {
     load_after = {
@@ -261,45 +290,24 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/vscode-js-debug",
     url = "https://github.com/microsoft/vscode-js-debug"
+=======
+>>>>>>> d10b14b0a94a4995f46176cfe3931e48dc5c6368
   }
 }
 
 time([[Defining packer_plugins]], false)
-local module_lazy_loads = {
-  ["^dap"] = "nvim-dap"
-}
-local lazy_load_called = {['packer.load'] = true}
-local function lazy_load_module(module_name)
-  local to_load = {}
-  if lazy_load_called[module_name] then return nil end
-  lazy_load_called[module_name] = true
-  for module_pat, plugin_name in pairs(module_lazy_loads) do
-    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
-      to_load[#to_load + 1] = plugin_name
-    end
-  end
-
-  if #to_load > 0 then
-    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
-    local loaded_mod = package.loaded[module_name]
-    if loaded_mod then
-      return function(modname) return loaded_mod end
-    end
-  end
-end
-
-if not vim.g.packer_custom_loader_enabled then
-  table.insert(package.loaders, 1, lazy_load_module)
-  vim.g.packer_custom_loader_enabled = true
-end
-
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'nvim-dap'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
-vim.cmd("augroup END")
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\flualine\frequire\0", "config", "lualine.nvim")
+time([[Config for lualine.nvim]], false)
+-- Config for: flutter-tools.nvim
+time([[Config for flutter-tools.nvim]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18flutter-tools\frequire\0", "config", "flutter-tools.nvim")
+time([[Config for flutter-tools.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
