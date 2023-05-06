@@ -70,5 +70,4 @@ return require("packer").startup(function(use)
     use("Xuyuanp/nerdtree-git-plugin")
     -- Utilities
     use("airblade/vim-gitgutter")
-    use("tpope/vim-surround")
 end)
