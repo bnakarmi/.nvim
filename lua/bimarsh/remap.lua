@@ -8,6 +8,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-f>", "<C-f>zz")
 -- Recenter on page backward
 vim.keymap.set("n", "<C-b>", "<C-b>zz")
+-- Recenter on find next
+vim.keymap.set("n", "n", "nzz")
+-- Recenter on find previous
+vim.keymap.set("n", "N", "Nzz")
 
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")

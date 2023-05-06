@@ -7,7 +7,11 @@ return require("packer").startup(function(use)
     use({
         "nvim-lualine/lualine.nvim",
         config = function()
-            require("lualine").setup()
+            require("lualine").setup{
+                options = {
+                    theme = 'horizon'
+                }
+            }
         end
     })
     use("lucasprag/simpleblack")
