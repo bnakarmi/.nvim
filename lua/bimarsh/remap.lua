@@ -24,9 +24,6 @@ vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
--- Save all
-vim.keymap.set("n", "<leader>sa", ":wa<CR>")
-
 -- Format
 vim.keymap.set("n", "<leader>f", ":Format<CR>")
 
@@ -35,6 +32,8 @@ vim.keymap.set("n", "<leader>f", ":Format<CR>")
 vim.keymap.set("n", "<leader>oe", "<cmd>NERDTreeFind<CR>")
 -- Close Explorer
 vim.keymap.set("n", "<leader>ce", "<cmd>NERDTreeClose<CR>")
+-- Close all hidden buffers
+vim.keymap.set("n", "<leader>cb", "<cmd>BufOnly<CR>")
 
 -- Telescope
 -- Search Files
@@ -49,9 +48,6 @@ vim.keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "[S]e
 vim.keymap.set("n", "<leader>sd", "<cmd>Telescope diagnostics<CR>", { desc = "[S]earch [D]iagnostics" })
 -- Search Keymaps
 vim.keymap.set("n", "<leader>sk", "<cmd>Telescope keymaps<CR>", { desc = "[S]earch [K]eymaps" })
-
--- Close Buffers
-vim.keymap.set("n", "<leader>cb", ":BufOnly<CR>")
 
 -- Debugging
 vim.keymap.set("n", "<leader>dR", "<cmd>lua require'dap'.run_to_cursor()<cr>", { desc = "[D]ebug [R]un to Cursor" })
