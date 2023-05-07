@@ -4,16 +4,6 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     -- Colorscheme
-    use({
-        "nvim-lualine/lualine.nvim",
-        config = function()
-            require("lualine").setup{
-                options = {
-                    theme = 'horizon'
-                }
-            }
-        end
-    })
     use("lucasprag/simpleblack")
     use({
         "EdenEast/nightfox.nvim",

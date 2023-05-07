@@ -34,6 +34,8 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.cursorline = true
+vim.opt.statusline = "%F %M %Y %R %= ASCII:%b HEX:0x%B ROW:%l COL:%c %p%%"
+vim.opt.laststatus = 3
 
 vim.g.netrw_browse_split = 2;
 vim.g.netrw_liststyle = 3
