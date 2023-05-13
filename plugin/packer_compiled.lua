@@ -84,6 +84,16 @@ _G.packer_plugins = {
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
+  ["cmp-dap"] = {
+    after_files = { "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-dap\\after\\plugin\\cmp_dap.lua" },
+    load_after = {
+      ["nvim-dap"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-dap",
+    url = "https://github.com/rcarriga/cmp-dap"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
@@ -130,6 +140,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["neovim-ayu"] = {
+    loaded = true,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neovim-ayu",
+    url = "https://github.com/Shatur/neovim-ayu"
+  },
   nerdtree = {
     loaded = true,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nerdtree",
@@ -154,6 +169,38 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-dap"] = {
+    after = { "vscode-js-debug", "cmp-dap", "telescope-dap.nvim", "nvim-dap-virtual-text", "nvim-dap-vscode-js" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-virtual-text"] = {
+    load_after = {
+      ["nvim-dap"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap-virtual-text",
+    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
+  },
+  ["nvim-dap-vscode-js"] = {
+    load_after = {
+      ["nvim-dap"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap-vscode-js",
+    url = "https://github.com/mxsdev/nvim-dap-vscode-js"
+  },
+  ["nvim-jdtls"] = {
+    loaded = true,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-jdtls",
+    url = "https://github.com/mfussenegger/nvim-jdtls"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -180,6 +227,15 @@ _G.packer_plugins = {
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\simpleblack",
     url = "https://github.com/lucasprag/simpleblack"
   },
+  ["telescope-dap.nvim"] = {
+    load_after = {
+      ["nvim-dap"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\telescope-dap.nvim",
+    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
+  },
   ["telescope.nvim"] = {
     config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14telescope\frequire\0" },
     loaded = true,
@@ -195,10 +251,48 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
+  },
+  ["vscode-js-debug"] = {
+    load_after = {
+      ["nvim-dap"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\vscode-js-debug",
+    url = "https://github.com/microsoft/vscode-js-debug"
   }
 }
 
 time([[Defining packer_plugins]], false)
+local module_lazy_loads = {
+  ["^dap"] = "nvim-dap",
+  ["^dap%-vscode%-js"] = "nvim-dap-vscode-js"
+}
+local lazy_load_called = {['packer.load'] = true}
+local function lazy_load_module(module_name)
+  local to_load = {}
+  if lazy_load_called[module_name] then return nil end
+  lazy_load_called[module_name] = true
+  for module_pat, plugin_name in pairs(module_lazy_loads) do
+    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
+      to_load[#to_load + 1] = plugin_name
+    end
+  end
+
+  if #to_load > 0 then
+    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
+    local loaded_mod = package.loaded[module_name]
+    if loaded_mod then
+      return function(modname) return loaded_mod end
+    end
+  end
+end
+
+if not vim.g.packer_custom_loader_enabled then
+  table.insert(package.loaders, 1, lazy_load_module)
+  vim.g.packer_custom_loader_enabled = true
+end
+
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14telescope\frequire\0", "config", "telescope.nvim")

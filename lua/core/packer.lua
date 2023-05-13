@@ -2,7 +2,6 @@ vim.cmd.packadd("packer.nvim")
 
 return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
-
     -- Colorscheme
     use("lucasprag/simpleblack")
     use({
@@ -10,6 +9,9 @@ return require("packer").startup(function(use)
     })
     use({
         'folke/tokyonight.nvim'
+    })
+    use({
+        'Shatur/neovim-ayu'
     })
 
     -- Telescope
@@ -38,6 +40,8 @@ return require("packer").startup(function(use)
             { "neovim/nvim-lspconfig" },
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
+            -- LSP clients
+            { "mfussenegger/nvim-jdtls" },
             -- Autocompletion
             { "hrsh7th/nvim-cmp" },
             { "hrsh7th/cmp-buffer" },
@@ -49,6 +53,25 @@ return require("packer").startup(function(use)
             { "L3MON4D3/LuaSnip" },
             { "rafamadriz/friendly-snippets" },
         },
+    })
+
+    -- DAP
+    use({
+        "mfussenegger/nvim-dap",
+        opt = true,
+        module = { "dap" },
+        requires = {
+            { "rcarriga/cmp-dap" },
+            { "nvim-telescope/telescope-dap.nvim" },
+            { "theHamsta/nvim-dap-virtual-text" },
+            { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
+            {
+                "microsoft/vscode-js-debug",
+                opt = true,
+                run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+            },
+        },
+        disable = false,
     })
 
     -- Flutter

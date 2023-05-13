@@ -1,1 +1,1 @@
-require("bimarsh")
+require("core")
