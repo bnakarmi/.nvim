@@ -71,10 +71,10 @@ function M.map_java_lsp_keys(bufnr)
     local java_utils = require("utils.java")
 
     M.map_lsp_keys(bufnr)
-    M.map_debugging_keys()
+    M.map_debug_keys()
 
     -- Java specific keymaps
-    key_map("n", "<leader>lo", ":lua require('jdtls').organize_imports()<CR>", bufnr)
+    key_map("n", "<leader>lo", ":lua require('jdtls').organize_imports()<CR>", bufnr, "[O]rganize [I]mports")
     -- Run
     key_map("n", "<leader><F9>", function() java_utils.run_spring_boot() end)
     -- Debug
