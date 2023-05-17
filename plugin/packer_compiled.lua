@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/bimarsh/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/bimarsh/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/bimarsh/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/bimarsh/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/bimarsh/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "C:\\Users\\bimar\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?.lua;C:\\Users\\bimar\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?\\init.lua;C:\\Users\\bimar\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?.lua;C:\\Users\\bimar\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?\\init.lua"
+local install_cpath_pattern = "C:\\Users\\bimar\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\lua\\5.1\\?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -76,106 +76,106 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   LuaSnip = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["cmp-buffer"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-dap"] = {
-    after_files = { "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/cmp-dap/after/plugin/cmp_dap.lua" },
+    after_files = { "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-dap\\after\\plugin\\cmp_dap.lua" },
     load_after = {
       ["nvim-dap"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/cmp-dap",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-dap",
     url = "https://github.com/rcarriga/cmp-dap"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-nvim-lua"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lua",
     url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
   ["cmp-path"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/cmp-path",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   cmp_luasnip = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["flutter-tools.nvim"] = {
-    config = { "\27LJ\2\2?\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\18flutter-tools\frequire\0" },
+    config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18flutter-tools\frequire\0" },
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\flutter-tools.nvim",
     url = "https://github.com/akinsho/flutter-tools.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
   ["neovim-ayu"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/neovim-ayu",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neovim-ayu",
     url = "https://github.com/Shatur/neovim-ayu"
   },
   nerdtree = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nerdtree",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nerdtree",
     url = "https://github.com/preservim/nerdtree"
   },
   ["nerdtree-git-plugin"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nerdtree-git-plugin",
     url = "https://github.com/Xuyuanp/nerdtree-git-plugin"
   },
   ["nightfox.nvim"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nightfox.nvim",
     url = "https://github.com/EdenEast/nightfox.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-dap"] = {
-    after = { "nvim-dap-vscode-js", "vscode-js-debug", "telescope-dap.nvim", "nvim-dap-ui", "cmp-dap", "nvim-dap-virtual-text" },
+    after = { "nvim-dap-vscode-js", "vscode-js-debug", "telescope-dap.nvim", "nvim-dap-ui", "nvim-dap-virtual-text", "cmp-dap" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/nvim-dap",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
   ["nvim-dap-ui"] = {
@@ -184,7 +184,7 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = false,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/nvim-dap-ui",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap-ui",
     url = "https://github.com/rcarriga/nvim-dap-ui"
   },
   ["nvim-dap-virtual-text"] = {
@@ -193,7 +193,7 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = false,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/nvim-dap-virtual-text",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap-virtual-text",
     url = "https://github.com/theHamsta/nvim-dap-virtual-text"
   },
   ["nvim-dap-vscode-js"] = {
@@ -203,42 +203,42 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/nvim-dap-vscode-js",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap-vscode-js",
     url = "https://github.com/mxsdev/nvim-dap-vscode-js"
   },
   ["nvim-jdtls"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-jdtls",
     url = "https://github.com/mfussenegger/nvim-jdtls"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["rust-tools.nvim"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
   },
   simpleblack = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/simpleblack",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\simpleblack",
     url = "https://github.com/lucasprag/simpleblack"
   },
   ["telescope-dap.nvim"] = {
@@ -247,23 +247,23 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = false,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/telescope-dap.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\telescope-dap.nvim",
     url = "https://github.com/nvim-telescope/telescope-dap.nvim"
   },
   ["telescope.nvim"] = {
-    config = { "\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14telescope\frequire\0" },
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14telescope\frequire\0" },
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-gitgutter"] = {
     loaded = true,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
   },
   ["vscode-js-debug"] = {
@@ -272,7 +272,7 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = false,
-    path = "/home/bimarsh/.local/share/nvim/site/pack/packer/opt/vscode-js-debug",
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\vscode-js-debug",
     url = "https://github.com/microsoft/vscode-js-debug"
   }
 }
@@ -309,11 +309,11 @@ end
 
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14telescope\frequire\0", "config", "telescope.nvim")
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
 -- Config for: flutter-tools.nvim
 time([[Config for flutter-tools.nvim]], true)
-try_loadstring("\27LJ\2\2?\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\18flutter-tools\frequire\0", "config", "flutter-tools.nvim")
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18flutter-tools\frequire\0", "config", "flutter-tools.nvim")
 time([[Config for flutter-tools.nvim]], false)
 
 _G._packer.inside_compile = false
