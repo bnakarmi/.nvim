@@ -21,7 +21,7 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 vim.opt.scrolloff = 8
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
@@ -32,5 +32,15 @@ vim.opt.updatetime = 50
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+vim.opt.cursorline = true
+vim.opt.statusline = "%F %M %Y %R %= BUF:%n ROW:%l COL:%c %p%%"
+vim.opt.laststatus = 3
+
+vim.opt.completeopt = "menu,preview,noinsert"
+
+vim.g.netrw_browse_split = 2;
+vim.g.netrw_liststyle = 3
+vim.g.netrw_winsize = 25
 
 vim.g.mapleader = " "

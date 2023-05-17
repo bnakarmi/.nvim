@@ -7,15 +7,16 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     "cssls",
     "html",
+    "jdtls",
+    "lua_ls",
     "rust_analyzer",
-    "sumneko_lua",
     "svelte",
     "tsserver",
     "yamlls",
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure("sumneko_lua", {
+lsp.configure("lua_ls", {
     settings = {
         Lua = {
             diagnostics = {
@@ -88,6 +89,21 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings,
+    enabled = function()
+        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+            or require("cmp_dap").is_dap_buffer()
+    end,
+    filetype = {
+        {
+            "dap-repl", 
+            "dapui_watches", 
+            "dapui_hover"
+        }, {
+            sources = {
+                { name = "dap" }
+            }
+        }
+    } 
 })
 
 lsp.set_preferences({
@@ -101,67 +117,16 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-    local bufmap = function(mode, lhs, rhs)
-        local opts = { buffer = bufnr, remap = false }
+    local core_remap = require("core.remap")
 
-        vim.keymap.set(mode, lhs, rhs, opts)
+    core_remap.map_lsp_keys(bufnr)
+
+    if client.name == "tsserver" then
+        core_remap.map_ts_lsp_keys()
     end
-
-    local organize_imports = function()
-        local buf_nr = vim.api.nvim_get_current_buf()
-
-        local params = {
-            command = "_typescript.organizeImports",
-            arguments = { vim.api.nvim_buf_get_name(buf_nr) },
-            title = "Organize imports",
-        }
-
-        vim.lsp.buf.execute_command(params)
-    end
-
-    -- Displays hover information about the symbol under the cursor
-    bufmap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<cr>")
-
-    -- Jump to the definition
-    bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
-
-    -- Jump to declaration
-    bufmap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
-
-    -- Lists all the implementations for the symbol under the cursor
-    bufmap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
-
-    -- Jumps to the definition of the type symbol
-    bufmap("n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
-
-    -- Lists all the references
-    bufmap("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
-
-    -- Displays a function's signature information
-    bufmap("n", "<leader>sh", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
-
-    -- Organize imports
-    bufmap("n", "<leader>oi", organize_imports)
-
-    -- Renames all references to the symbol under the cursor
-    bufmap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>")
-
-    -- Selects a code action available at the current cursor position
-    bufmap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-    bufmap("x", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
-
-    -- Show diagnostics in a floating window
-    bufmap("n", "<leader>vd", "<cmd>lua vim.diagnostic.open_float()<cr>")
-
-    -- Move to the previous diagnostic
-    bufmap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
-
-    -- Move to the next diagnostic
-    bufmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 end)
 
 lsp.setup()
-
 
 local sign = function(opts)
     vim.fn.sign_define(opts.name, {
@@ -179,6 +144,7 @@ sign({ name = "DiagnosticSignInfo", text = "" })
 vim.diagnostic.config({
     virtual_text = true,
     severity_sort = true,
+    signs = true,
     float = {
         border = "rounded",
         source = "always",
