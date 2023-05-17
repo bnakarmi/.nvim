@@ -8,15 +8,16 @@ lsp.ensure_installed({
     "angularls",
     "cssls",
     "html",
+    "jdtls",
+    "lua_ls",
     "rust_analyzer",
     "svelte",
-    "jdtls",
     "tsserver",
     "yamlls",
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure("sumneko_lua", {
+lsp.configure("lua_ls", {
     settings = {
         Lua = {
             diagnostics = {
@@ -144,6 +145,7 @@ sign({ name = "DiagnosticSignInfo", text = "" })
 vim.diagnostic.config({
     virtual_text = true,
     severity_sort = true,
+    signs = true,
     float = {
         border = "rounded",
         source = "always",

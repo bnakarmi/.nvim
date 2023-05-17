@@ -40,6 +40,7 @@ return require("packer").startup(function(use)
             { "neovim/nvim-lspconfig" },
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
+            { "simrat39/rust-tools.nvim" },
             -- LSP clients
             { "mfussenegger/nvim-jdtls" },
             -- Autocompletion
@@ -61,6 +62,7 @@ return require("packer").startup(function(use)
         opt = true,
         module = { "dap" },
         requires = {
+            { "rcarriga/nvim-dap-ui" },
             { "rcarriga/cmp-dap" },
             { "nvim-telescope/telescope-dap.nvim" },
             { "theHamsta/nvim-dap-virtual-text" },
@@ -69,7 +71,7 @@ return require("packer").startup(function(use)
                 "microsoft/vscode-js-debug",
                 opt = true,
                 run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
-            },
+            }
         },
         disable = false,
     })

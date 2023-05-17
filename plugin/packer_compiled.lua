@@ -171,12 +171,21 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-dap"] = {
-    after = { "vscode-js-debug", "cmp-dap", "telescope-dap.nvim", "nvim-dap-virtual-text", "nvim-dap-vscode-js" },
+    after = { "nvim-dap-ui", "vscode-js-debug", "telescope-dap.nvim", "nvim-dap-virtual-text", "nvim-dap-vscode-js", "cmp-dap" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    load_after = {
+      ["nvim-dap"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
   },
   ["nvim-dap-virtual-text"] = {
     load_after = {
@@ -221,6 +230,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\bimar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
   },
   simpleblack = {
     loaded = true,
