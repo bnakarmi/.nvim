@@ -1,15 +1,35 @@
-local nvim_config_path = vim.fn.stdpath "config"
+local get_dev_path = function()
+    if vim.loop.os_uname().sysname == "Linux" then
+        return "~/development/"
+    else
+        return "D:/development/"
+    end
+end
+
+local get_lsp_server_path = function()
+    if vim.loop.os_uname().sysname == "Linux" then
+        return "config_linux"
+    else
+        return "config_win"
+    end
+end
+
+local get_jdk_path = function()
+    if vim.loop.os_uname().sysname == "Linux" then
+        return "/usr/lib/jvm/java-17-openjdk-amd64"
+    else
+        return get_dev_path() .. "tools/jdk-17.02"
+    end
+end
+
 local nvim_data_path = vim.fn.stdpath "data"
 local jdtls_path = nvim_data_path .. "/mason/packages/jdtls/"
-local path_to_lsp_server = jdtls_path .. "config_win"
+local path_to_lsp_server = jdtls_path .. get_lsp_server_path()
 local path_to_plugins = jdtls_path .. "plugins/"
--- Check version periodically
---local path_to_jar = vim.fn.glob(path_to_plugins .. "org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar")
 local path_to_jar = vim.fn.glob(path_to_plugins .. "org.eclipse.equinox.launcher_*.jar", 1)
--- Add lombok jar to path
 local path_to_lombok = jdtls_path .. "lombok.jar"
-local path_to_java_dap = nvim_data_path .. "/debug_tools/java-debug/com.microsoft.java.debug.plugin/target/"
-local dap_path = vim.fn.glob(path_to_java_dap .. "com.microsoft.java.debug.plugin-*.jar", 1)
+local path_to_java_debug = get_dev_path() .. "tools/debug/java-debug/com.microsoft.java.debug.plugin/target/"
+local dap_path = vim.fn.glob(path_to_java_debug .. "com.microsoft.java.debug.plugin-*.jar", 1)
 
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
@@ -19,10 +39,7 @@ if root_dir == "" then
 end
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
--- Update based on OS
-local dev_path = "D:/development/"
-local dev_tools_path = dev_path .. "tools/"
-local workspace_path = dev_path .. "workspace/java/"
+local workspace_path = get_dev_path() .. "workspace/java/"
 local workspace_dir = workspace_path .. project_name
 
 os.execute("mkdir " .. workspace_dir)
@@ -48,7 +65,7 @@ local config = {
     root_dir = root_dir,
     settings = {
         java = {
-            home = dev_tools_path .. "jdk-17.02",
+            home = get_jdk_path(),
             eclipse = {
                 downloadSources = true,
             },
@@ -56,18 +73,8 @@ local config = {
                 updateBuildConfiguration = "interactive",
                 runtimes = {
                     {
-                        name = "JavaSE-1.8",
-                        path = dev_tools_path .. "jdk-1.8"
-
-                    },
-                    {
-                        name = "JavaSE-11",
-                        path = dev_tools_path .. "jdk-11.0.2"
-
-                    },
-                    {
                         name = "JavaSE-17",
-                        path = dev_tools_path .. "jdk-17.0.2",
+                        path = get_jdk_path(),
                     }
                 }
             },
@@ -86,7 +93,7 @@ local config = {
             format = {
                 enabled = true,
                 settings = {
-                    url = nvim_data_path .. "/code_styles/java-google-style.xml",
+                    url = get_dev_path() .. "/code_styles/java-google-style.xml",
                     profile = "GoogleStyle",
                 },
             },
@@ -129,7 +136,7 @@ local config = {
     },
     init_options = {
         bundles = {
-            vim.fn.glob(path_to_java_dap .. "com.microsoft.java.debug.plugin-*.jar", 1)
+            vim.fn.glob(path_to_java_debug .. "com.microsoft.java.debug.plugin-*.jar", 1)
         },
     },
 }
