@@ -7,7 +7,6 @@ require("nvim-treesitter.configs").setup({
         'rust',
         'typescript',
         'javascript',
-        'help',
         'css',
         'svelte'
     },
