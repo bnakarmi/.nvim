@@ -18,7 +18,7 @@ local get_jdk_path = function()
     if vim.loop.os_uname().sysname == "Linux" then
         return "/usr/lib/jvm/java-17-openjdk-amd64"
     else
-        return get_dev_path() .. "tools/jdk-17.02"
+        return get_dev_path() .. "tools/jdk-17.0.2"
     end
 end
 
