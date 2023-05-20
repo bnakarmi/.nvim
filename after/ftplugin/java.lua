@@ -1,34 +1,30 @@
-local get_dev_path = function()
+local get_configs = function()
     if vim.loop.os_uname().sysname == "Linux" then
-        return "~/development/"
+        return {
+            dev_path = "~/development/",
+            lsp_path = "config_linux",
+            jdk_path = "/usr/lib/jvm/java-17-openjdk-amd64"
+        }
     else
-        return "D:/development/"
+        local dev_path = "D:/development/"
+
+        return {
+            dev_path = dev_path,
+            lsp_path = "config_win",
+            jdk_path = dev_path .. "tools/jdk-17.0.2"
+        }
     end
 end
 
-local get_lsp_server_path = function()
-    if vim.loop.os_uname().sysname == "Linux" then
-        return "config_linux"
-    else
-        return "config_win"
-    end
-end
-
-local get_jdk_path = function()
-    if vim.loop.os_uname().sysname == "Linux" then
-        return "/usr/lib/jvm/java-17-openjdk-amd64"
-    else
-        return get_dev_path() .. "tools/jdk-17.0.2"
-    end
-end
-
+local java_configs = get_configs()
+local dev_path = java_configs.dev_path
 local nvim_data_path = vim.fn.stdpath "data"
 local jdtls_path = nvim_data_path .. "/mason/packages/jdtls/"
-local path_to_lsp_server = jdtls_path .. get_lsp_server_path()
+local path_to_lsp_server = jdtls_path .. java_configs.lsp_path
 local path_to_plugins = jdtls_path .. "plugins/"
 local path_to_jar = vim.fn.glob(path_to_plugins .. "org.eclipse.equinox.launcher_*.jar", 1)
 local path_to_lombok = jdtls_path .. "lombok.jar"
-local path_to_java_debug = get_dev_path() .. "tools/debug/java-debug/com.microsoft.java.debug.plugin/target/"
+local path_to_java_debug = dev_path .. "tools/debug/java-debug/com.microsoft.java.debug.plugin/target/"
 local dap_path = vim.fn.glob(path_to_java_debug .. "com.microsoft.java.debug.plugin-*.jar", 1)
 
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
@@ -39,7 +35,7 @@ if root_dir == "" then
 end
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local workspace_path = get_dev_path() .. "workspace/java/"
+local workspace_path = dev_path .. "workspace/java/"
 local workspace_dir = workspace_path .. project_name
 
 os.execute("mkdir " .. workspace_dir)
@@ -65,7 +61,7 @@ local config = {
     root_dir = root_dir,
     settings = {
         java = {
-            home = get_jdk_path(),
+            home = java_configs.jdk_path,
             eclipse = {
                 downloadSources = true,
             },
@@ -74,7 +70,7 @@ local config = {
                 runtimes = {
                     {
                         name = "JavaSE-17",
-                        path = get_jdk_path(),
+                        path = java_configs.jdk_path,
                     }
                 }
             },
@@ -93,7 +89,7 @@ local config = {
             format = {
                 enabled = true,
                 settings = {
-                    url = get_dev_path() .. "/code_styles/java-google-style.xml",
+                    url = dev_path .. "/code_styles/java-google-style.xml",
                     profile = "GoogleStyle",
                 },
             },
