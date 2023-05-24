@@ -27,6 +27,7 @@ return require("packer").startup(function(use)
     })
 
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    use({ "nvim-treesitter/nvim-treesitter-context" })
 
     use({
         "jose-elias-alvarez/null-ls.nvim",
@@ -66,11 +67,11 @@ return require("packer").startup(function(use)
             { "rcarriga/cmp-dap" },
             { "nvim-telescope/telescope-dap.nvim" },
             { "theHamsta/nvim-dap-virtual-text" },
-            { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
+            { "mxsdev/nvim-dap-vscode-js",        module = { "dap-vscode-js" } },
             {
                 "microsoft/vscode-js-debug",
                 opt = true,
-                run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+                run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
             }
         },
         disable = false,
