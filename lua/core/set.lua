@@ -34,7 +34,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.cursorline = true
-vim.opt.statusline = "%F %M %Y %R %= BUF:%n ROW:%l COL:%c %p%%"
+vim.opt.statusline = "%F %M %Y %R %= BUF:%n %l:%c %p%%"
 vim.opt.laststatus = 3
 
 vim.opt.completeopt = "menu,preview,noinsert"
