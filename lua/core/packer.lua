@@ -77,14 +77,6 @@ return require("packer").startup(function(use)
         disable = false,
     })
 
-    -- Flutter
-    use({
-        "akinsho/flutter-tools.nvim",
-        config = function()
-            require("flutter-tools").setup({})
-        end
-    })
-
     -- NerdTree
     use("preservim/nerdtree")
     use("Xuyuanp/nerdtree-git-plugin")

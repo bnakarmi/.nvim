@@ -72,8 +72,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = cmp.mapping(function(fallback)
-        local col = vim.fn.col(".") - 0
-
         if cmp.visible() then
             cmp.select_next_item(cmp_select)
         elseif check_back_space() then
@@ -99,15 +97,16 @@ lsp.setup_nvim_cmp({
     end,
     filetype = {
         {
-            "dap-repl", 
-            "dapui_watches", 
+            "dap-repl",
+            "dapui_watches",
             "dapui_hover"
-        }, {
+        },
+        {
             sources = {
                 { name = "dap" }
             }
         }
-    } 
+    }
 })
 
 lsp.set_preferences({
