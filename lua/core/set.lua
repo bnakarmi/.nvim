@@ -39,8 +39,6 @@ vim.opt.laststatus = 3
 
 vim.opt.completeopt = "menu,preview,noinsert"
 
-vim.g.netrw_browse_split = 2;
 vim.g.netrw_liststyle = 3
-vim.g.netrw_winsize = 25
 
 vim.g.mapleader = " "

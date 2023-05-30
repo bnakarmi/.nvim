@@ -22,9 +22,6 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 -- Format
 vim.keymap.set("n", "<leader>f", ":Format<CR>")
 
--- NerdTree
-vim.keymap.set("n", "<leader>eo", "<cmd>NERDTreeFind<CR>", { desc = "[E]xplorer [O]pen" })
-vim.keymap.set("n", "<leader>ec", "<cmd>NERDTreeClose<CR>", { desc = "[E]xplorer [C]lose" })
 vim.keymap.set("n", "<leader>cb", "<cmd>BufOnly<CR>")
 
 -- Telescope

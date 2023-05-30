@@ -76,10 +76,4 @@ return require("packer").startup(function(use)
         },
         disable = false,
     })
-
-    -- NerdTree
-    use("preservim/nerdtree")
-    use("Xuyuanp/nerdtree-git-plugin")
-    -- Utilities
-    use("airblade/vim-gitgutter")
 end)
