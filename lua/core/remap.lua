@@ -1,16 +1,7 @@
 -- START::Global keymaps
 vim.keymap.set("i", "kj", "<Esc>")
-
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-f>", "<C-f>zz")
-vim.keymap.set("n", "<C-b>", "<C-b>zz")
-vim.keymap.set("n", "n", "nzz")
-vim.keymap.set("n", "N", "Nzz")
-
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
-
 -- Move lines up/down
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
@@ -18,10 +9,7 @@ vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
 vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
-
--- Format
-vim.keymap.set("n", "<leader>f", ":Format<CR>")
-
+-- Close all hidden buffers
 vim.keymap.set("n", "<leader>cb", "<cmd>BufOnly<CR>")
 
 -- Telescope
@@ -49,6 +37,7 @@ local key_map = function(mode, lhs, rhs, bufnr, desc)
 end
 
 function M.map_lsp_keys(bufnr)
+    key_map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", bufnr, "[L]sp [F]ormat")
     key_map("n", "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", bufnr, "[L]sp [H]elp")
     key_map("n", "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<cr>", bufnr, "[L]sp [D]efinition")
     key_map("n", "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<cr>", bufnr, "[L]sp [D]eclaration")

@@ -1,7 +1,5 @@
 vim.opt.exrc = true
--- vim.opt.guicursor = ""
 vim.opt.mouse = "a"
--- Hide unsaved buffer
 vim.opt.hidden = true
 
 vim.opt.nu = true
