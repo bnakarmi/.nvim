@@ -20,4 +20,5 @@ vim.opt.cursorline = true
 vim.opt.statusline = "%f %M %Y %R %= %l:%c %p%%"
 vim.opt.laststatus = 3
 vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 0
 vim.g.mapleader = " "
