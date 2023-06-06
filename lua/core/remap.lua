@@ -19,6 +19,7 @@ vim.keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<CR>", { desc = "[S]ear
 vim.keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "[S]earch [H]elp" })
 vim.keymap.set("n", "<leader>sd", "<cmd>Telescope diagnostics<CR>", { desc = "[S]earch [D]iagnostics" })
 vim.keymap.set("n", "<leader>sk", "<cmd>Telescope keymaps<CR>", { desc = "[S]earch [K]eymaps" })
+vim.keymap.set("n", "<leader>sls", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "[S]earch [L]sp [S]ymbols" })
 
 -- Terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "[T]erminal [C]lose" })
