@@ -76,4 +76,6 @@ return require("packer").startup(function(use)
         },
         disable = false,
     })
+
+    use("tpope/vim-fugitive")
 end)
