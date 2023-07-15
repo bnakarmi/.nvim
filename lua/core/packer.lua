@@ -29,10 +29,6 @@ return require("packer").startup(function(use)
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use({ "nvim-treesitter/nvim-treesitter-context" })
 
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-    })
-
     -- LSP
     use({
         "VonHeikemen/lsp-zero.nvim",
@@ -55,26 +51,6 @@ return require("packer").startup(function(use)
             { "L3MON4D3/LuaSnip" },
             { "rafamadriz/friendly-snippets" },
         },
-    })
-
-    -- DAP
-    use({
-        "mfussenegger/nvim-dap",
-        opt = true,
-        module = { "dap" },
-        requires = {
-            { "rcarriga/nvim-dap-ui" },
-            { "rcarriga/cmp-dap" },
-            { "nvim-telescope/telescope-dap.nvim" },
-            { "theHamsta/nvim-dap-virtual-text" },
-            { "mxsdev/nvim-dap-vscode-js",        module = { "dap-vscode-js" } },
-            {
-                "microsoft/vscode-js-debug",
-                opt = true,
-                run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-            }
-        },
-        disable = false,
     })
 
     use("tpope/vim-fugitive")
