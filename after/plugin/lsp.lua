@@ -10,7 +10,6 @@ lsp.ensure_installed({
     "jdtls",
     "lua_ls",
     "rust_analyzer",
-    "svelte",
     "tsserver",
     "yamlls",
 })
