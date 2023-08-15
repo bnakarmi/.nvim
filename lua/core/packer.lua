@@ -3,16 +3,21 @@ vim.cmd.packadd("packer.nvim")
 return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     -- Colorscheme
-    use("lucasprag/simpleblack")
-    use({
-        "EdenEast/nightfox.nvim",
-    })
-    use({
-        'folke/tokyonight.nvim'
-    })
-    use({
-        'Shatur/neovim-ayu'
-    })
+    use {
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = function()
+            require('catppuccin').setup({
+                color_overrides = {
+                    mocha = {
+                        base = "#000000",
+                        mantle = "#000000",
+                        crust = "#000000",
+                    },
+                },
+            })
+        end
+    }
 
     -- Telescope
     use({
