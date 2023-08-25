@@ -7,7 +7,6 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     "cssls",
     "html",
-    "jdtls",
     "lua_ls",
     "rust_analyzer",
     "tsserver",
