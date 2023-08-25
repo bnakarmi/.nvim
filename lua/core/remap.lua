@@ -23,6 +23,13 @@ vim.keymap.set("n", "<leader>sls", "<cmd>Telescope lsp_document_symbols<CR>", { 
 
 -- Terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "[T]erminal [C]lose" })
+
+-- Git
+vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "[G]it [S]tatus" })
+vim.keymap.set("n", "<leader>gd", "<cmd>Gdiff<CR>", { desc = "[G]it [D]iff" })
+vim.keymap.set("n", "<leader>gc", "<cmd>Gcommit<CR>", { desc = "[G]it [C]ommit" })
+vim.keymap.set("n", "<leader>gp", "<cmd>Gpush<CR>", { desc = "[G]it [P]ush" })
+vim.keymap.set("n", "<leader>gl", "<cmd>Glog<CR>", { desc = "[G]it [L]og" })
 -- END::Global keymaps
 
 local M = {}
