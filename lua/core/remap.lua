@@ -61,22 +61,6 @@ function M.map_lsp_keys(bufnr)
     key_map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", bufnr, "[N]ext [D]iagnostic")
 end
 
-function M.map_java_lsp_keys(bufnr)
-    local java_utils = require("utils.java")
-
-    M.map_lsp_keys(bufnr)
-    M.map_debug_keys()
-
-    -- Java specific keymaps
-    key_map("n", "<leader>lo", ":lua require('jdtls').organize_imports()<CR>", bufnr, "[O]rganize [I]mports")
-    -- Run
-    key_map("n", "<leader><F9>", function() java_utils.run_spring_boot() end)
-    -- Debug
-    key_map("n", "<leader><F10>", function() java_utils.run_spring_boot(true) end)
-    -- Attach debugger
-    key_map("n", "<leader>da", function() java_utils.attach_to_debug() end)
-end
-
 function M.map_ts_lsp_keys()
     local buf_nr = vim.api.nvim_get_current_buf()
 

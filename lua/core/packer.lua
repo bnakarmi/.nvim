@@ -43,8 +43,6 @@ return require("packer").startup(function(use)
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
             { "simrat39/rust-tools.nvim" },
-            -- LSP clients
-            { "mfussenegger/nvim-jdtls" },
             -- Autocompletion
             { "hrsh7th/nvim-cmp" },
             { "hrsh7th/cmp-buffer" },
