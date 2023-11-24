@@ -56,7 +56,6 @@ return require("packer").startup(function(use)
         },
     })
 
-    use("tpope/vim-fugitive")
     use({
         "kdheepak/lazygit.nvim",
         -- optional for floating window border decoration
