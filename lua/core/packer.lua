@@ -52,9 +52,16 @@ return require("packer").startup(function(use)
             { "hrsh7th/cmp-nvim-lua" },
             -- Snippets
             { "L3MON4D3/LuaSnip" },
-            { "rafamadriz/friendly-snippets"}
+            { "rafamadriz/friendly-snippets" }
         },
     })
 
     use("tpope/vim-fugitive")
+    use({
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    })
 end)
