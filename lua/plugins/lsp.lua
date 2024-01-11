@@ -4,6 +4,7 @@ local function organize_imports(command, bufnr)
         command = command,
         arguments = { vim.api.nvim_buf_get_name(buf_nr) },
     }
+
     vim.lsp.buf.execute_command(params)
 end
 
@@ -41,6 +42,9 @@ return {
 
             lspconfig.tsserver.setup({
                 capabilities = capabilities,
+                root_dir = function()
+                    return vim.loop.cwd()
+                end,
                 on_attach = function(_, bufnr)
                     vim.api.nvim_create_user_command(
                         "TypescriptOrganizeImports",
