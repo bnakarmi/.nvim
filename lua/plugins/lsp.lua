@@ -23,6 +23,7 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "cssls",
+                    "gopls",
                     "html",
                     "lua_ls",
                     "rust_analyzer",
@@ -38,7 +39,9 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
 
-            lspconfig.lua_ls.setup({ capabilities = capabilities })
+            for _, lsp in ipairs({ "cssls", "html", "lua_ls", "gopls" }) do
+                lspconfig[lsp].setup({ capabilities = capabilities })
+            end
 
             lspconfig.tsserver.setup({
                 capabilities = capabilities,
