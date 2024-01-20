@@ -38,8 +38,3 @@ vim.keymap.set("n", "<leader>gs", "<cmd>LazyGit<CR>",
 vim.keymap.set("n", "<leader>ex", "<cmd>Ex<CR>",
     { desc = "[E]xplorer" })
 
--- Harpoon
-vim.keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<CR>",
-    { desc = "[H]arpoon [M]ark" })
-vim.keymap.set("n", "<leader>hq", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>",
-    { desc = "[H]arpoon [T]oggle Quick Menu" })
