@@ -38,3 +38,5 @@ vim.keymap.set("n", "<leader>gs", "<cmd>LazyGit<CR>",
 vim.keymap.set("n", "<leader>ex", "<cmd>Ex<CR>",
     { desc = "[E]xplorer" })
 
+vim.keymap.set("v", "<leader>y", "\"+y", { desc = "[C]opy to Clipboard" })
+vim.keymap.set("n", "<leader>P", "\"+P", { desc = "[P]aste from Clipboard" })
