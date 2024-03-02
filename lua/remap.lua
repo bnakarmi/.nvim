@@ -40,3 +40,6 @@ vim.keymap.set("n", "<leader>ex", "<cmd>Ex<CR>",
 
 vim.keymap.set("v", "<leader>y", "\"+y", { desc = "[C]opy to Clipboard" })
 vim.keymap.set("n", "<leader>p", "\"+P", { desc = "[P]aste from Clipboard" })
+
+vim.keymap.set('i', '<leader>e', '<ESC>iif err != nil {<CR>}<ESC>Vk==<ESC>o', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>e', '<ESC>iif err != nil {<CR>}<ESC>Vk==<ESC>o', { noremap = true, silent = true })
