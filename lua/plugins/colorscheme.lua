@@ -11,8 +11,5 @@ return {
                 },
             },
         })
-
-        vim.cmd.syntax("enable")
-        vim.cmd.colorscheme("catppuccin")
     end
 }
