@@ -86,6 +86,8 @@ return {
                 { desc = "[P]revious [D]iagnostic" })
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
                 { desc = "[N]ext [D]iagnostic" })
+            vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float,
+                { desc = "[O]pen [D]iagnostic [E]rror" })
         end
     },
 }
