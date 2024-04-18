@@ -1,12 +1,10 @@
 return {
     {
-        "bluz71/vim-moonfly-colors",
-        name = "moonfly",
-        lazy = false,
+        "nanotech/jellybeans.vim",
         priority = 1000,
         config = function()
             vim.cmd.syntax("enable")
-            vim.cmd.colorscheme("moonfly")
+            vim.cmd.colorscheme("jellybeans")
         end
     }
 }
