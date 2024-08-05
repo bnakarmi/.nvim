@@ -30,6 +30,8 @@ vim.opt.splitbelow = true
 
 vim.opt.statusline = "%f %M %Y %R %= %l:%c %p%%"
 
+vim.opt.inccommand = 'split'
+
 vim.g.netrw_banner = 0
 
 vim.g.mapleader = " "

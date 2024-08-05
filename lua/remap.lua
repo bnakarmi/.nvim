@@ -14,22 +14,6 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 vim.api.nvim_create_user_command("BufOnly", "%bdelete|edit #|bdelete #", {})
 vim.keymap.set("n", "<leader>cb", "<cmd>BufOnly<CR>")
 
--- Telescope
-vim.keymap.set("n", "<leader>sf", "<cmd>Telescope find_files<CR>",
-    { desc = "[S]earch [F]iles" })
-vim.keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<CR>",
-    { desc = "[S]earch by [G]rep" })
-vim.keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<CR>",
-    { desc = "[S]earch [B]uffers" })
-vim.keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<CR>",
-    { desc = "[S]earch [H]elp" })
-vim.keymap.set("n", "<leader>sd", "<cmd>Telescope diagnostics<CR>",
-    { desc = "[S]earch [D]iagnostics" })
-vim.keymap.set("n", "<leader>sk", "<cmd>Telescope keymaps<CR>",
-    { desc = "[S]earch [K]eymaps" })
-vim.keymap.set("n", "<leader>sls", "<cmd>Telescope lsp_document_symbols<CR>",
-    { desc = "[S]earch [L]sp [S]ymbols" })
-
 -- Git
 vim.keymap.set("n", "<leader>gs", "<cmd>LazyGit<CR>",
     { desc = "[G]it [S]tatus" })
