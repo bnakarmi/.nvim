@@ -1,16 +1,14 @@
-
 return {
     {
         "williamboman/mason.nvim",
+        dependencies = {
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+        },
         lazy = false,
         config = function()
             require('mason').setup()
-        end
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        lazy = false,
-        config = function()
+
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "cssls",
@@ -21,18 +19,32 @@ return {
                     "ts_ls"
                 }
             })
-        end
-    },
-    {
-        "neovim/nvim-lspconfig",
-        lazy = false,
-        config = function()
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local lspconfig = require("lspconfig")
 
-            for _, lsp in ipairs({ "cssls", "html", "lua_ls", "gopls" }) do
-                lspconfig[lsp].setup({ capabilities = capabilities })
-            end
+            require("mason-lspconfig").setup()
+
+            require("mason-lspconfig").setup_handlers({
+                -- Will be called for each installed server that doesn't have
+                -- a dedicated handler.
+
+                function(server_name) -- default handler (optional)
+                    -- https://github.com/neovim/nvim-lspconfig/pull/3232
+                    if server_name == "tsserver" then
+                        server_name = "ts_ls"
+                    end
+
+                    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+                    require("lspconfig")[server_name].setup({
+                        capabilities = capabilities,
+                    })
+                end,
+            })
+
+            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            -- local lspconfig = require("lspconfig")
+
+            -- for _, lsp in ipairs({ "cssls", "html", "lua_ls", "gopls" }) do
+            --     lspconfig[lsp].setup({ capabilities = capabilities })
+            -- end
 
             vim.keymap.set(
                 "n",
@@ -53,5 +65,5 @@ return {
             vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "[L]sp [R]eferences" })
             vim.keymap.set("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "[L]sp [A]ctions" })
         end
-    },
+    }
 }
