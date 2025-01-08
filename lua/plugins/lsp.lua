@@ -39,13 +39,6 @@ return {
                 end,
             })
 
-            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            -- local lspconfig = require("lspconfig")
-
-            -- for _, lsp in ipairs({ "cssls", "html", "lua_ls", "gopls" }) do
-            --     lspconfig[lsp].setup({ capabilities = capabilities })
-            -- end
-
             vim.keymap.set(
                 "n",
                 "<leader>lf",
