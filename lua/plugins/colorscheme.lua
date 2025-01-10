@@ -12,6 +12,7 @@ return {
     {
         "rebelot/kanagawa.nvim",
         priority = 1000,
+        enabled = false,
         config = function()
             vim.cmd.colorscheme("kanagawa-dragon")
         end
@@ -22,6 +23,13 @@ return {
         enabled = false,
         config = function()
             vim.cmd.colorscheme("everforest")
+        end
+    },
+    {
+        "shaunsingh/nord.nvim",
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme("nord")
         end
     },
 }
