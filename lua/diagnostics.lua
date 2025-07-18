@@ -19,7 +19,20 @@ vim.keymap.set("n", "dq", vim.diagnostic.setloclist, { desc = "[O]pen [D]iagnost
 vim.diagnostic.config({
     virtual_text = true,
     severity_sort = true,
-    signs = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '✘ ',
+            [vim.diagnostic.severity.WARN] = '▲',
+            [vim.diagnostic.severity.HINT] = '⚑',
+            [vim.diagnostic.severity.INFO] = '',
+        },
+        linehl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+        },
+        numhl = {
+            [vim.diagnostic.severity.WARN] = 'WarningMsg',
+        },
+    },
     float = {
         border = "rounded",
         source = "always",
