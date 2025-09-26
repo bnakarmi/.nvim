@@ -3,7 +3,6 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = require("lspconfig")
 
 local function organize_imports(command, bufnr)
     local buf_nr = bufnr or vim.api.nvim_get_current_buf()
@@ -15,7 +14,7 @@ local function organize_imports(command, bufnr)
     vim.lsp.buf.execute_command(params)
 end
 
-lspconfig.ts_ls.setup({
+vim.lsp.config.ts_ls.setup({
     capabilities = capabilities,
     on_attach = function(_, bufnr)
         vim.api.nvim_create_user_command(

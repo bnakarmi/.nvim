@@ -8,6 +8,7 @@ return {
         lazy = false,
         config = function()
             require('mason').setup()
+            require('java').setup()
 
             require("mason-lspconfig").setup({
                 ensure_installed = {
