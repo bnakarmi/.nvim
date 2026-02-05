@@ -4,6 +4,7 @@ return {
     {
         "ellisonleao/gruvbox.nvim",
         priority = 1000,
+        enable = false,
         config = function()
             require('gruvbox').setup({
                 dim_inactive = true
@@ -39,7 +40,6 @@ return {
     {
         "shaunsingh/nord.nvim",
         priority = 1000,
-        enabled = false,
         config = function()
             vim.cmd.colorscheme("nord")
         end
