@@ -27,7 +27,7 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             vim.lsp.config.vtsls = {
-                filetypes = {"typescript", "javascript"},
+                filetypes = { "typescript", "javascript" },
                 capabilities = capabilities,
                 on_attach = function(_, bufnr)
                     vim.keymap.set("n", "<leader>lo", function()
@@ -52,16 +52,20 @@ return {
                         "v",
                         "<leader>lf",
                         function()
-                            require('conform').format({ async = true, bufnr = bufnr }, function(err)
-                                if not err then
-                                    local mode = vim.api.nvim_get_mode().mode
+                            require('conform')
+                                .format({
+                                    async = true, bufnr = bufnr
+                                }, function(err)
+                                    if not err then
+                                        local mode = vim.api.nvim_get_mode().mode
 
-                                    if vim.startswith(string.lower(mode), "v") then
-                                        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
-                                            "n", true)
+                                        if vim.startswith(string.lower(mode), "v") then
+                                            vim.api.nvim_feedkeys(
+                                                vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+                                                "n", true)
+                                        end
                                     end
-                                end
-                            end)
+                                end)
                         end,
                         { desc = "[L]sp [F]ormat - [R]ange" }
                     )
