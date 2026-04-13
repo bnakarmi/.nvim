@@ -4,7 +4,6 @@ return {
     {
         "nanotech/jellybeans.vim",
         priority = 1000,
-        enabled = false,
         config = function()
             vim.cmd.colorscheme("jellybeans")
         end
@@ -12,24 +11,9 @@ return {
     {
         "rebelot/kanagawa.nvim",
         priority = 1000,
+        enabled = false,
         config = function()
             vim.cmd.colorscheme("kanagawa-dragon")
-        end
-    },
-    {
-        "neanias/everforest-nvim",
-        priority = 1000,
-        enabled = false,
-        config = function()
-            vim.cmd.colorscheme("everforest")
-        end
-    },
-    {
-        "shaunsingh/nord.nvim",
-        priority = 1000,
-        enabled = false,
-        config = function()
-            vim.cmd.colorscheme("nord")
         end
     },
 }
