@@ -5,7 +5,7 @@ return {
         "nvim-lua/plenary.nvim",
     },
     config = function()
-        require'telescope'.setup {
+        require 'telescope'.setup {
             defaults = {
                 file_ignore_patterns = { 'node_modules' }
             }
@@ -28,5 +28,20 @@ return {
                 previewer = false,
             })
         end, { desc = '[/] Fuzzily search in current buffer' })
+
+        require("telescope").setup({
+            pickers = {
+                buffers = {
+                    mappings = {
+                        i = {
+                            ["<C-d>"] = "delete_buffer",
+                        },
+                        n = {
+                            ["dd"] = "delete_buffer",
+                      },
+                    },
+                },
+            },
+        })
     end
 }
