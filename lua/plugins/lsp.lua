@@ -19,9 +19,31 @@ return {
                 "n",
                 "<leader>lf",
                 function()
-                    vim.lsp.buf.format { async = true }
+                    require('conform').format({ async = true, lsp_fallback = true })
                 end,
                 { desc = "[L]sp [F]ormat" }
+            )
+
+            vim.keymap.set(
+                "v",
+                "<leader>lf",
+                function()
+                    require('conform')
+                        .format({
+                            async = true, lsp_fallback = true
+                        }, function(err)
+                            if not err then
+                                local mode = vim.api.nvim_get_mode().mode
+
+                                if vim.startswith(string.lower(mode), "v") then
+                                    vim.api.nvim_feedkeys(
+                                        vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+                                        "n", true)
+                                end
+                            end
+                        end)
+                end,
+                { desc = "[L]sp [F]ormat - [R]ange" }
             )
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -37,37 +59,6 @@ return {
                             })
                         end,
                         { desc = "[O]rganize [I]mports" }
-                    )
-
-                    vim.keymap.set(
-                        "n",
-                        "<leader>lf",
-                        function()
-                            require('conform').format({ async = true, bufnr = bufnr })
-                        end,
-                        { desc = "[L]sp [F]ormat" }
-                    )
-
-                    vim.keymap.set(
-                        "v",
-                        "<leader>lf",
-                        function()
-                            require('conform')
-                                .format({
-                                    async = true, bufnr = bufnr
-                                }, function(err)
-                                    if not err then
-                                        local mode = vim.api.nvim_get_mode().mode
-
-                                        if vim.startswith(string.lower(mode), "v") then
-                                            vim.api.nvim_feedkeys(
-                                                vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
-                                                "n", true)
-                                        end
-                                    end
-                                end)
-                        end,
-                        { desc = "[L]sp [F]ormat - [R]ange" }
                     )
                 end
             }
