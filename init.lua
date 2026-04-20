@@ -17,9 +17,4 @@ require("set")
 require("remap")
 require("diagnostics")
 require("lazy").setup("plugins")
-require("session").setup({
-    sort_by = "updated",
-    skip_dirs = {
-        vim.fn.expand("~")
-    }
-})
+require("session").setup()

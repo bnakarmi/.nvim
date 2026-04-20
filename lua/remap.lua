@@ -24,10 +24,19 @@ vim.keymap.set("n", "<leader>ex", "<cmd>Ex<CR>",
 
 vim.keymap.set("v", "<leader>y", "\"+y", { desc = "[C]opy to Clipboard" })
 vim.keymap.set("n", "p", function()
-    local c = vim.fn.col(".")
+    local col = vim.api.nvim_win_get_cursor(0)[2]
+    local keys = tostring(vim.v.count1) .. "p"
 
-    vim.cmd("normal! p")
-    vim.fn.cursor(vim.fn.line("."), c)
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes(keys, true, false, true),
+        "n",
+        false
+    )
+
+    vim.schedule(function()
+        local pos = vim.api.nvim_win_get_cursor(0)
+        vim.api.nvim_win_set_cursor(0, { pos[1], col })
+    end)
 end, { desc = "[P]aste and restore column" })
 vim.keymap.set("n", "<leader>p", "\"+P", { desc = "[P]aste from Clipoard" })
 
