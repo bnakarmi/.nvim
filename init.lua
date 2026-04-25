@@ -14,7 +14,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("set")
-require("remap")
-require("diagnostics")
 require("lazy").setup("plugins")
+require("diagnostics")
+require("commands")
+require("keymap-common")
+require("keymap-dap")
+require("keymap-lsp")
+require("keymap-telescope")
 require("session").setup()
