@@ -20,6 +20,11 @@ vim.keymap.set("n", "<leader>gs", "<cmd>LazyGit<CR>",
 vim.keymap.set("n", "<leader>ex", "<cmd>Ex<CR>",
     { desc = "[E]xplorer" })
 
+vim.keymap.set("n", "[c", "<cmd>cprev<CR>",
+    { desc = "[Q]uickfix list previous" })
+vim.keymap.set("n", "]c", "<cmd>cnext<CR>",
+    { desc = "[Q]uickfix list next" })
+
 -- Copy/Paste from clipboard
 vim.keymap.set("v", "<leader>y", "\"+y", { desc = "[C]opy to Clipboard" })
 vim.keymap.set("n", "<leader>p", "\"+P", { desc = "[P]aste from Clipoard" })
