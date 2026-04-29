@@ -75,6 +75,10 @@ function M.render()
     parts[#parts + 1] = hl
     parts[#parts + 1] = "%" .. i .. "T"
     parts[#parts + 1] = " " .. i .. " " .. tab.label .. modified .. " "
+
+    if i < last then
+      parts[#parts + 1] = "%#TabLineFill#│"
+    end
   end
 
   parts[#parts + 1] = "%#TabLineFill#%T"
@@ -83,7 +87,7 @@ end
 
 function M.setup()
   vim.o.showtabline = 2
-  vim.o.tabline = "%!v:lua.require'tabline'.render()"
+  vim.o.tabline = "%!v:lua.require('tabline').render()"
 end
 
 return M
