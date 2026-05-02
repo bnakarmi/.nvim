@@ -1,35 +1,32 @@
-vim.keymap.set("i", "kj", "<Esc>")
-vim.keymap.set("v", ">", ">gv")
-vim.keymap.set("v", "<", "<gv")
+local set = vim.keymap.set
+
+set("i", "kj", "<Esc>")
+set("v", ">", ">gv")
+set("v", "<", "<gv")
 
 -- Move lines up/down
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
-vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
-vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+set("n", "<A-j>", ":m .+1<CR>==")
+set("n", "<A-k>", ":m .-2<CR>==")
+set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
+set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "<leader>cb", "<cmd>BufOnly<CR>", { desc = "[C]lose all hidden buffers" })
+set("n", "<leader>cb", "<cmd>BufOnly<CR>", { desc = "[C]lose all hidden buffers" })
 
 -- Git
-vim.keymap.set("n", "<leader>gs", "<cmd>LazyGit<CR>",
-    { desc = "[G]it [S]tatus" })
+set("n", "<leader>gs", "<cmd>LazyGit<CR>", { desc = "[G]it [S]tatus" })
 
 -- Explorer
-vim.keymap.set("n", "<leader>ex", "<cmd>Ex<CR>",
-    { desc = "[E]xplorer" })
-
-vim.keymap.set("n", "[c", "<cmd>cprev<CR>",
-    { desc = "[Q]uickfix list previous" })
-vim.keymap.set("n", "]c", "<cmd>cnext<CR>",
-    { desc = "[Q]uickfix list next" })
+set("n", "<leader>ex", "<cmd>Ex<CR>", { desc = "[E]xplorer" })
+set("n", "[[", "<cmd>cprev<CR>", { desc = "[Q]uickfix list previous" })
+set("n", "]]", "<cmd>cnext<CR>", { desc = "[Q]uickfix list next" })
 
 -- Copy/Paste from clipboard
-vim.keymap.set("v", "<leader>y", "\"+y", { desc = "[C]opy to Clipboard" })
-vim.keymap.set("n", "<leader>p", "\"+P", { desc = "[P]aste from Clipoard" })
+set("v", "<leader>y", "\"+y", { desc = "[C]opy to Clipboard" })
+set("n", "<leader>p", "\"+P", { desc = "[P]aste from Clipoard" })
 
-vim.keymap.set("n", "p", function()
+set("n", "p", function()
     local col = vim.api.nvim_win_get_cursor(0)[2]
     local keys = tostring(vim.v.count1) .. "p"
 
@@ -45,4 +42,13 @@ vim.keymap.set("n", "p", function()
     end)
 end, { desc = "[P]aste and restore column" })
 
-vim.keymap.set("t", "<leader><esc>", "<c-\\><c-n>", { desc = "[T]erminal::Switch to normal mode" })
+-- Open a terminal at the bottom of the screen with a fixed height.
+set("n", ",st", function()
+    vim.cmd.new()
+    vim.cmd.wincmd "J"
+    vim.api.nvim_win_set_height(0, 12)
+    vim.wo.winfixheight = true
+    vim.cmd.term()
+end)
+
+set("t", "<leader><esc>", "<c-\\><c-n>", { desc = "[T]erminal::Switch to normal mode" })
