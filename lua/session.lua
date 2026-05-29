@@ -85,7 +85,7 @@ local function has_real_buffers()
         if api.nvim_buf_is_loaded(buf) then
             local name = api.nvim_buf_get_name(buf)
             local buftype = vim.bo[buf].buftype
-            if name ~= "" and buftype == "" then
+            if name ~= "" and buftype == "" and fn.filereadable(name) == 1 then
                 return true
             end
         end
