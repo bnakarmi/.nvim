@@ -598,8 +598,14 @@ function M.setup(opts)
 
     api.nvim_create_autocmd("VimEnter", {
         group = group,
+        nested = true,
         callback = function()
-            M.load()
+            local no_args = fn.argc() == 0
+            local not_stdin = fn.line2byte("$") == -1
+
+            if no_args and not_stdin then
+                M.load()
+            end
         end,
     })
 
