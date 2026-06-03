@@ -22,6 +22,9 @@ set("n", "<leader>ex", "<cmd>Ex<CR>", { desc = "[E]xplorer" })
 set("n", "[[", "<cmd>cprev<CR>", { desc = "[Q]uickfix list previous" })
 set("n", "]]", "<cmd>cnext<CR>", { desc = "[Q]uickfix list next" })
 
+set("n", "<leader>tc", "~hi", { desc = "Toggle [C]ase and switch to insert mode" })
+set("v", "<leader>tc", "d~h", { desc = "Delete selection and toggle [C]ase" })
+
 -- Copy/Paste from clipboard
 set("v", "<leader>y", "\"+y", { desc = "[C]opy to Clipboard" })
 set("n", "<leader>p", "\"+P", { desc = "[P]aste from Clipoard" })
