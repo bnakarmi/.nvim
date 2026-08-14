@@ -29,6 +29,8 @@ set("v", "<leader>tc", "d~h", { desc = "Delete selection and toggle [C]ase" })
 set("v", "<leader>y", "\"+y", { desc = "[C]opy to Clipboard" })
 set("n", "<leader>p", "\"+P", { desc = "[P]aste from Clipoard" })
 
+set("i", "<C-l>", "<Right>", { desc = "Move right in insert mode", silent = true })
+
 set("n", "p", function()
     local col = vim.api.nvim_win_get_cursor(0)[2]
     local keys = tostring(vim.v.count1) .. "p"
@@ -46,7 +48,7 @@ set("n", "p", function()
 end, { desc = "[P]aste and restore column" })
 
 -- Open a terminal at the bottom of the screen with a fixed height.
-set("n", ",st", function()
+set("n", "<leader>st", function()
     vim.cmd.new()
     vim.cmd.wincmd "J"
     vim.api.nvim_win_set_height(0, 12)
