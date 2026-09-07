@@ -57,4 +57,10 @@ set("n", "<leader>st", function()
     vim.cmd.startinsert()
 end)
 
+set('n', '<leader>tt', function()
+    vim.cmd.tabnew()
+    vim.cmd.term()
+    vim.cmd.startinsert()
+end, { desc = 'Open terminal in a new tab' })
+
 set("t", "<leader><esc>", "<c-\\><c-n>", { desc = "[T]erminal::Switch to normal mode" })
