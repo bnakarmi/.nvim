@@ -13,7 +13,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-
 require("set")
 require("lazy").setup("plugins")
 require("diagnostics")
