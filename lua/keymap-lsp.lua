@@ -32,7 +32,18 @@ set(
 )
 
 set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "[L]sp [H]elp" })
+
 set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "[L]sp [D]efinition" })
+set("n", "<leader>ldx", function()
+  vim.cmd.split()
+  vim.lsp.buf.definition()
+end, { desc = "LSP definition in horizontal split" })
+
+set("n", "<leader>ldv", function()
+  vim.cmd.vsplit()
+  vim.lsp.buf.definition()
+end, { desc = "LSP definition in vertical split" })
+
 set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "[L]sp [D]eclaration" })
 set("n", "<leader>li", vim.lsp.buf.implementation, { desc = "[L]sp [I]mplementation" })
 set("n", "<leader>lt", vim.lsp.buf.type_definition, { desc = "[L]sp [T]ype Definition" })
