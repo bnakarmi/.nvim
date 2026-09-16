@@ -1,6 +1,7 @@
 local M = {}
 
 local fn = vim.fn
+local opened_with_args = fn.argc() > 0
 local api = vim.api
 local json = vim.json
 
@@ -612,7 +613,9 @@ function M.setup(opts)
     api.nvim_create_autocmd("VimLeavePre", {
         group = group,
         callback = function()
-            M.save()
+            if not opened_with_args then
+                M.save()
+            end
         end,
     })
 
