@@ -14,12 +14,9 @@ return {
                 }
             })
 
-
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
             vim.lsp.config.vtsls = {
                 filetypes = { "typescript", "javascript" },
-                capabilities = capabilities,
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
                 on_attach = function(_, bufnr)
                     vim.keymap.set("n", "<leader>lo", function()
                             vim.lsp.buf.execute_command({
@@ -27,7 +24,7 @@ return {
                                 arguments = { vim.api.nvim_buf_get_name(0) }
                             })
                         end,
-                        { desc = "[O]rganize [I]mports" }
+                        { buffer = bufnr, desc = "[O]rganize [I]mports" }
                     )
                 end
             }

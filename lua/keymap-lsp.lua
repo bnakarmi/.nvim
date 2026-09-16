@@ -37,11 +37,13 @@ set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "[L]sp [D]efinition" })
 set("n", "<leader>ldx", function()
   vim.cmd.split()
   vim.lsp.buf.definition()
+  vim.cmd.normal({ 'zt', bang = true })
 end, { desc = "LSP definition in horizontal split" })
 
 set("n", "<leader>ldv", function()
   vim.cmd.vsplit()
   vim.lsp.buf.definition()
+  vim.cmd.normal({ 'zt', bang = true })
 end, { desc = "LSP definition in vertical split" })
 
 set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "[L]sp [D]eclaration" })

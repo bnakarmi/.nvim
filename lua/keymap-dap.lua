@@ -27,3 +27,7 @@ set("n", "<leader>drt", "<cmd>lua require'dap'.repl.toggle()<cr>", { desc = "[D]
 set("n", "<leader>dh", "<cmd>lua require'dap.ui.widgets'.hover()<cr>", { desc = "[D]ebug [H]over Variables" })
 set("n", "<leader>ds", "<cmd>lua require'dap.ui.widgets'.scopes()<cr>", { desc = "[D]ebug [S]copes" })
 set("n", "<leader>dgs", "<cmd>lua require'dap'.session()<cr>", { desc = "[D]ebug [G]et Session" })
+
+set("n", "<leader>d?", function()
+    require("dapui").eval(nil, { enter = true })
+end)
