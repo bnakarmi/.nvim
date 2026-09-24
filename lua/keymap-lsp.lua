@@ -33,17 +33,30 @@ set(
 
 set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "[L]sp [H]elp" })
 
-set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "[L]sp [D]efinition" })
+local function go_to_definition(split)
+  if split then
+    vim.cmd(split)
+  end
+
+  vim.lsp.buf.definition({
+    on_list = function(options)
+      vim.fn.setqflist({}, " ", options)
+      vim.cmd.cfirst()
+      vim.cmd.normal({ "zt", bang = true })
+    end,
+  })
+end
+
+set("n", "<leader>ld", function()
+  go_to_definition()
+end, { desc = "LSP definition" })
+
 set("n", "<leader>ldx", function()
-  vim.cmd.split()
-  vim.lsp.buf.definition()
-  vim.cmd.normal({ 'zt', bang = true })
+  go_to_definition("split")
 end, { desc = "LSP definition in horizontal split" })
 
 set("n", "<leader>ldv", function()
-  vim.cmd.vsplit()
-  vim.lsp.buf.definition()
-  vim.cmd.normal({ 'zt', bang = true })
+  go_to_definition("vsplit")
 end, { desc = "LSP definition in vertical split" })
 
 set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "[L]sp [D]eclaration" })
