@@ -64,3 +64,17 @@ set('n', '<leader>tt', function()
 end, { desc = 'Open terminal in a new tab' })
 
 set("t", "<leader><esc>", "<c-\\><c-n>", { desc = "[T]erminal::Switch to normal mode" })
+
+set("n", "<leader>te", function()
+  vim.cmd("tabnew")
+  vim.api.nvim_feedkeys(":setfiletype ", "n", false)
+end, {
+  desc = "New tab with a filetype",
+})
+
+set("n", "<leader>ve", function()
+  vim.cmd("vnew")
+  vim.api.nvim_feedkeys(":setfiletype ", "n", false)
+end, {
+  desc = "New vertical split with a filetype",
+})
