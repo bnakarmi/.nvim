@@ -31,20 +31,38 @@ set("n", "<leader>p", "\"+P", { desc = "[P]aste from Clipoard" })
 
 set("i", "<C-l>", "<Right>", { desc = "Move right in insert mode", silent = true })
 
+-- set("n", "p", function()
+--     local col = vim.api.nvim_win_get_cursor(0)[2]
+--     local keys = tostring(vim.v.count1) .. "p"
+--
+--     vim.api.nvim_feedkeys(
+--         vim.api.nvim_replace_termcodes(keys, true, false, true),
+--         "n",
+--         false
+--     )
+--
+--     vim.schedule(function()
+--         local pos = vim.api.nvim_win_get_cursor(0)
+--         vim.api.nvim_win_set_cursor(0, { pos[1], col })
+--     end)
+-- end, { desc = "[P]aste and restore column" })
 set("n", "p", function()
     local col = vim.api.nvim_win_get_cursor(0)[2]
-    local keys = tostring(vim.v.count1) .. "p"
+    local register = vim.v.register
+    local count = vim.v.count1
 
-    vim.api.nvim_feedkeys(
-        vim.api.nvim_replace_termcodes(keys, true, false, true),
-        "n",
-        false
-    )
+    vim.cmd.normal({
+        '"' .. register .. count .. "p",
+        bang = true,
+    })
 
-    vim.schedule(function()
-        local pos = vim.api.nvim_win_get_cursor(0)
-        vim.api.nvim_win_set_cursor(0, { pos[1], col })
-    end)
+    local pos = vim.api.nvim_win_get_cursor(0)
+    local max_col = math.max(0, vim.fn.col("$") - 1)
+
+    vim.api.nvim_win_set_cursor(0, {
+        pos[1],
+        math.min(col, max_col),
+    })
 end, { desc = "[P]aste and restore column" })
 
 -- Open a terminal at the bottom of the screen with a fixed height.
