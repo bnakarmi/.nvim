@@ -34,34 +34,37 @@ set(
 set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "[L]sp [H]elp" })
 
 local function go_to_definition(split)
-  if split then
-    vim.cmd(split)
-  end
+    if split then
+        vim.cmd(split)
+    end
 
-  vim.lsp.buf.definition({
-    on_list = function(options)
-      vim.fn.setqflist({}, " ", options)
-      vim.cmd.cfirst()
-      vim.cmd.normal({ "zt", bang = true })
-    end,
-  })
+    vim.lsp.buf.definition({
+        reuse_win = true,
+        on_list = function(options)
+            vim.fn.setqflist({}, " ", options)
+            vim.cmd.cfirst()
+            vim.cmd.normal({ "zt", bang = true })
+        end,
+    })
 end
 
 set("n", "<leader>ld", function()
-  go_to_definition()
+    go_to_definition()
 end, { desc = "LSP definition" })
 
 set("n", "<leader>ldx", function()
-  go_to_definition("split")
+    go_to_definition("split")
 end, { desc = "LSP definition in horizontal split" })
 
 set("n", "<leader>ldv", function()
-  go_to_definition("vsplit")
+    go_to_definition("vsplit")
 end, { desc = "LSP definition in vertical split" })
 
-set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "[L]sp [D]eclaration" })
-set("n", "<leader>li", vim.lsp.buf.implementation, { desc = "[L]sp [I]mplementation" })
-set("n", "<leader>lt", vim.lsp.buf.type_definition, { desc = "[L]sp [T]ype Definition" })
+set("n", "<leader>lD", function() vim.lsp.buf.declaration({ reuse_win = true }) end, { desc = "[L]sp [D]eclaration" })
+set("n", "<leader>li", function() vim.lsp.buf.implementation({ reuse_win = true }) end,
+    { desc = "[L]sp [I]mplementation" })
+set("n", "<leader>lt", function() vim.lsp.buf.type_definition({ reuse_win = true }) end,
+    { desc = "[L]sp [T]ype Definition" })
 set("n", "<leader>lR", vim.lsp.buf.references, { desc = "[L]sp [R]eferences" })
 set("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "[L]sp [H]elp" })
 set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "[L]sp [R]eferences" })
